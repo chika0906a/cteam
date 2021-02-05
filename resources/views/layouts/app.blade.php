@@ -18,81 +18,66 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>@yield('title')</title>
-   <style>
-   body {
-       color:#999; 
-      background: linear-gradient(to right top, #888, #000000);
-       }
-   .disp_img{
-      background-repeat:no-repeat;
-      width:auto;
-      height:65px;
-      align:left;
-      object-fit:cover;
-      margin:0px 0px 20px 0px;
-   }
-   .menutitle {font-size:100pt; font-weight:bold;  margin:50px 0 40px 400;}
-
-   .content{font-size:50pt;color:#ffffff;  line-height:0; text-align: center; }
-
-   .content11 {font-size:50pt;color:#ffffff; margin:50px 0 40px 0; line-height:0; text-align: left; }
-   
-   .content1 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0px;text-align: left;   }
-   
-   .content2 {font-size:12pt; color:#ffffff;margin:500　0　10　0; line-height:0;text-align: center;  }
-
-   .content3 {font-size:12pt; color:#ffffff;margin:500px 500 400px 500px; line-height:0;   }
-
-   .content4 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0px; line-height:0; text-align: center ; }
-
-   .content5 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0px; line-height:0; text-align: center ;  }
-
-   .content6 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0px; line-height:0; text-align: center ; }
-
-   .footer { text-align:right; font-size:10pt; margin:10px;
-       border-bottom:solid 1px #ccc; color:#ccc; }
-   </style>
 </head>
 <body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    </nav>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
-    <main class="py-4">
-        @yield('content')
-    </main>
-</div>
-    <h1>@yield('title')</h1>
-   <h2>@yield('menu_title')</h2>
-<div class="menu_content">
-   @yield('menu_content')
-   </div>
-   <hr size="1">
-   <div class="content11">
-   @yield('content11')
-   </div>
-   <div class="content1">
-   @yield('content1')
-   </div>
-   <div class="content2">
-   @yield('content2')
-   </div>
-   
-   <div class="content3">
-   @yield('content3')
-   </div>
-   <div class="content4">
-   @yield('content4')
-   </div>
-   <div class="content5">
-   @yield('content5')
-   </div>
-   <div class="content6">
-   @yield('content6')
-   </div>
-   <div class="footer">
-   @yield ('footer')
-   </div>
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+                            
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
 </body>
 </html>
-

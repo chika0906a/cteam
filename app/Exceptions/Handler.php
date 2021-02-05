@@ -34,4 +34,46 @@ class Handler extends ExceptionHandler
     {
         //
     }
+    /**
+     * Report or log an exception.
+     *
+     * @param  \Exception  $exception
+     * @return void
+     */
+   /* public function report(Exception $exception)
+    {
+        parent::report($exception);
+    }
+    */
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
+     */
+    /*public function render($request, Exception $exception)
+    {
+        return parent::render($request, $exception);
+    }
+    */
+    /*
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['message' => $exception->getMessage()], 401);
+        }
+        if ($request->is('management') || $request->is('admin/*')) {
+            return redirect()->guest('/fresh/management/login');
+        }
+        if ($request->is('company') || $request->is('company/*')) {
+            return redirect()->guest('/fresh/company/login');
+        }
+        if ($request->is('general') || $request->is('general/*')) {
+            return redirect()->guest('/fresh/general/login');
+        }
+        return redirect()->guest($exception->redirectTo() ?? route('login'));
+    }
+*/
 }

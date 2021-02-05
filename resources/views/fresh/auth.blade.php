@@ -26,7 +26,7 @@ ECHO '<FONT COLOR="white">ログイン画面 </FONT>';
 
 @section('content')
 <p>{{$message}}</p>
-  <form action="/fresh/generallogin" method="post">
+  <form action="/fresh/general/login" method="post">
   <table>
   @csrf
   <tr><th>メールアドレス</th><td><input type="text"

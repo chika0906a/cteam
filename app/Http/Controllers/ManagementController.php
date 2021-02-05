@@ -19,7 +19,7 @@ class ManagementController extends Controller
     public function getAuth(Request $request)
    {
      $param =['message' => '管理者用ログイン画面'];
-     return view('fresh.hello.auth', $param);
+     return view('fresh.management.hello.auth', $param);
    }
 
    public function postAuth(Request $request)
@@ -28,7 +28,7 @@ class ManagementController extends Controller
      $password = $request->password;
      if (Auth::attempt(['email' => $email,'password' => $password])) {
        $msg = 'ログインしました。(' . Auth::user()->name . ')';
-       return view('fresh.hello.top', ['message' => $msg]);
+       return view('fresh.management.hello.top', ['message' => $msg]);
      } else {
        $msg = 'ログインに失敗しました。';
      }
@@ -38,7 +38,7 @@ class ManagementController extends Controller
    //トップページ
     public function top(Request $request) 
     {
-    return view('fresh.hello.top');
+    return view('fresh.management.hello.top');
     //$sort = $request->sort;
     //$items=Person::orderBy($sort, 'asc')
     //->simplePaginate(5);
@@ -54,26 +54,26 @@ class ManagementController extends Controller
         $items = Generaluser::all();
         //$items = User::all();
         $param = ['input' => '','items' => $items];
-        return view('fresh.generaluser.index', ['items' => $items]);
+        return view('fresh.management.generaluser.index', ['items' => $items]);
     }
 
     public function generaluserfind(Request $request)
     {
         //$item = Person::where('name',$request->input)->first();
         $item = Generaluser::where('id',$request->input)->first();
-        return view('fresh.generaluser.show', ['item' => $item]);
+        return view('fresh.management.generaluser.show', ['item' => $item]);
     }
 
     public function generalusershow(Request $request)
     {
         //$item = Person::where('id', $request->id)->first();
         $item = Generaluser::where('id', $request->id)->first();
-        return view('fresh.generaluser.show', ['item' => $item]);
+        return view('fresh.management.generaluser.show', ['item' => $item]);
     }
 
     public function generaluseradd(Request $request)
     {
-        return view('fresh.generaluser.add');
+        return view('fresh.management.generaluser.add');
     }
 
     public function generalusercreate(Request $request)
@@ -85,13 +85,13 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $generaluser->fill($form)->save();
-        return redirect('fresh/generaluser');
+        return redirect('fresh/management/generaluser');
     }
     public function generaluseredit(Request $request)
     {
         //$item = Person::find($request->id);
         $item = Generaluser::find($request->id);
-        return view('fresh.generaluser.edit', ['item' => $item]);
+        return view('fresh.management.generaluser.edit', ['item' => $item]);
     }
 
     public function generaluserupdate(Request $request)
@@ -104,21 +104,21 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $generaluser->fill($form)->save();
-        return redirect('fresh/generaluser');
+        return redirect('fresh/management/generaluser');
     }
 
     public function generaluserdel(Request $request)
     {
         //$item = Person::find($request->id);
         $item = Generaluser::where('id', $request->id)->first();
-        return view('fresh.generaluser.del', ['item' => $item]);
+        return view('fresh.management.generaluser.del', ['item' => $item]);
     }
 
     public function generaluserremove(Request $request)
     {
         //Person::find($request->id)->delete();
         Company::where('id',$request->id)->delete();
-        return redirect('fresh/generaluser');
+        return redirect('fresh/management/generaluser');
     }
 
 
@@ -130,26 +130,26 @@ class ManagementController extends Controller
         $items = Company::all();
         //$items = Generaluser::select('select * from generalusers');
         $param = ['input' => '','items' => $items];
-        return view('fresh.company.index', $param);
+        return view('fresh.management.company.index', $param);
     }
 
     public function companyfind(Request $request)
     {
         //$item = Person::where('name',$request->input)->first();
         $item = Company::where('company_id',$request->input)->first();
-        return view('fresh.company.show', ['item' => $item]);
+        return view('fresh.management.company.show', ['item' => $item]);
     }
 
     public function companyshow(Request $request)
     {
         //$item = Person::where('id', $request->id)->first();
         $item = Company::where('company_id', $request->company_id)->first();
-        return view('fresh.company.show', ['item' => $item]);
+        return view('fresh.management.company.show', ['item' => $item]);
     }
 
     public function companyadd(Request $request)
     {
-        return view('fresh.company.add');
+        return view('fresh.management.company.add');
     }
 
     public function companycreate(Request $request)
@@ -161,13 +161,13 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $company->fill($form)->save();
-        return redirect('fresh/company');
+        return redirect('fresh/management/company');
     }
     public function companyedit(Request $request)
     {
         //$item = Person::find($request->id);
         $item = Company::find($request->company_id);
-        return view('fresh.company.edit', ['item' => $item]);
+        return view('fresh.management.company.edit', ['item' => $item]);
     }
 
     public function companyupdate(Request $request)
@@ -180,21 +180,21 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $company->fill($form)->save();
-        return redirect('fresh/company');
+        return redirect('fresh/management/company');
     }
 
     public function companydel(Request $request)
     {
         //$item = Person::find($request->id);
         $item = Company::where('company_id', $request->company_id)->first();
-        return view('fresh.company.del', ['item' => $item]);
+        return view('fresh.management.company.del', ['item' => $item]);
     }
 
     public function companyremove(Request $request)
     {
         //Person::find($request->id)->delete();
         Company::where('company_id',$request->company_id)->delete();
-        return redirect('fresh/company');
+        return redirect('fresh/management/company');
     }
 
 
@@ -205,26 +205,26 @@ class ManagementController extends Controller
         $items = Companysupport::all();
         //$items = Generaluser::select('select * from generalusers');
         $param = ['input' => '','items' => $items];
-        return view('fresh.companysupport.index', $param);
+        return view('fresh.management.companysupport.index', $param);
     }
 
     public function companysupportfind(Request $request)
     {
         //$item = Person::where('name',$request->input)->first();
         $item = Companysupport::where('support_num',$request->input)->first();
-        return view('fresh.companysupport.show', ['item' => $item]);
+        return view('fresh.management.companysupport.show', ['item' => $item]);
     }
 
     public function companysupportshow(Request $request)
     {
         //$item = Person::where('id', $request->id)->first();
         $item = Companysupport::where('support_num', $request->support_num)->first();
-        return view('fresh.companysupport.show', ['item' => $item]);
+        return view('fresh.management.companysupport.show', ['item' => $item]);
     }
 
     public function companysupportadd(Request $request)
     {
-        return view('fresh.companysupport.add');
+        return view('fresh.management.companysupport.add');
     }
 
     public function companysupportcreate(Request $request)
@@ -236,13 +236,13 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $companysupport->fill($form)->save();
-        return redirect('fresh/companysupport');
+        return redirect('fresh/management/companysupport');
     }
     public function companysupportedit(Request $request)
     {
         //$item = Person::find($request->id);
         $item = Companysupport::find($request->support_num);
-        return view('fresh.companysupport.edit', ['item' => $item]);
+        return view('fresh.management.companysupport.edit', ['item' => $item]);
     }
 
     public function companysupportupdate(Request $request)
@@ -255,21 +255,21 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $companysupport->fill($form)->save();
-        return redirect('fresh/companysupport');
+        return redirect('fresh/management/companysupport');
     }
 
     public function companysupportdel(Request $request)
     {
         //$item = Person::find($request->id);
         $item = Companysupport::where('support_num', $request->support_num)->first();
-        return view('fresh.companysupport.del', ['item' => $item]);
+        return view('fresh.management.companysupport.del', ['item' => $item]);
     }
 
     public function companysupportremove(Request $request)
     {
         //Person::find($request->id)->delete();
         Companysupport::where('support_num', $request->support_num)->delete();
-        return redirect('fresh/companysupport');
+        return redirect('fresh/management/companysupport');
     }
 
     //お問い合わせ(一般ユーザー)のメソッド
@@ -279,26 +279,26 @@ class ManagementController extends Controller
         $items = Support::all();
         //$items = Generaluser::select('select * from generalusers');
         $param = ['input' => '','items' => $items];
-        return view('fresh.support.index', $param);
+        return view('fresh.management.support.index', $param);
     }
 
     public function supportfind(Request $request)
     {
         //$item = Person::where('name',$request->input)->first();
         $item = Support::where('support_num',$request->input)->first();
-        return view('fresh.support.show', ['item' => $item]);
+        return view('fresh.management.support.show', ['item' => $item]);
     }
 
     public function supportshow(Request $request)
     {
         //$item = Person::where('id', $request->id)->first();
         $item = Support::where('support_num', $request->support_num)->first();
-        return view('fresh.support.show', ['item' => $item]);
+        return view('fresh.management.support.show', ['item' => $item]);
     }
 
     public function supportadd(Request $request)
     {
-        return view('fresh.support.add');
+        return view('fresh.management.support.add');
     }
 
     public function supportcreate(Request $request)
@@ -310,13 +310,13 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $support->fill($form)->save();
-        return redirect('fresh/support');
+        return redirect('fresh/management/support');
     }
     public function supportedit(Request $request)
     {
         //$item = Person::find($request->id);
         $item = Support::find($request->support_num);
-        return view('fresh.support.edit', ['item' => $item]);
+        return view('fresh.management.support.edit', ['item' => $item]);
     }
 
     public function supportupdate(Request $request)
@@ -329,7 +329,7 @@ class ManagementController extends Controller
         unset($form['_token']);
         //$person->fill($form)->save();
         $support->fill($form)->save();
-        return redirect('fresh/support');
+        return redirect('fresh/management/support');
     }
 
     public function supportdel(Request $request)
@@ -337,7 +337,7 @@ class ManagementController extends Controller
         //$item = Person::find($request->id);
         //$item = Support::find($request->support_num);
         $item = Support::where('support_num', $request->support_num)->first();
-        return view('fresh.support.del', ['item' => $item]);
+        return view('fresh.management.support.del', ['item' => $item]);
     }
 
     public function supportremove(Request $request)
@@ -345,6 +345,6 @@ class ManagementController extends Controller
         //Person::find($request->id)->delete();
         //Support::find($request->support_num)->delete();
         $item = Support::where('support_num', $request->support_num)->delete();
-        return redirect('fresh/support');
+        return redirect('fresh/management/support');
     }
 }

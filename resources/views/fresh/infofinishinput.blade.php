@@ -17,7 +17,7 @@ ECHO '<FONT COLOR="white"> お知らせフォーム送信完了画面 </FONT>';
 
 
 @section('content')
-   <form action="infofinish" method="post">
+   <form action="/company/infofinish" method="post">
        @csrf
        <select name="example"style="width:700px; height:30px">
 　　　　　<option value="情報を送る範囲を選択" 
@@ -45,7 +45,7 @@ ECHO '<FONT COLOR="white"> お知らせフォーム送信完了画面 </FONT>';
 @endsection
 
 @section('content2')
-   <form action="info" method="post">
+   <form action="/company/infofinish" method="post">
       
       <input type="text" style="width:300px; height:300px";  value=""placeholder="内容"></td></tr>
    </form>

@@ -11,13 +11,24 @@ class Generaluser extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'generalusers';
+    protected $guard = 'general';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'mail', 'password', 'gender', 'date', 'area_id', 'station_id', 'people_ind', 'nickname',
+        'id',
+        'name',
+        'email',
+        'password',
+        'gender',
+        'birthday',
+        'area_id',
+        'station_id',
+        'people_ind',
     ];
 
     /**
@@ -26,7 +37,8 @@ class Generaluser extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -35,6 +47,6 @@ class Generaluser extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'updated_at' => 'datetime',
+        'email_verified_at' => 'datetime',
     ];
 }

@@ -19,113 +19,109 @@ Route::get('/', function () {
 
 //一般ユーザー
 //ログイン画面表示
-Route::get('fresh/generallogin', 'App\Http\Controllers\GeneralController@getAuth');
+Route::get('fresh/general/login', 'App\Http\Controllers\Auth\LoginController@showGeneralLoginForm');
 //ログイン認証
-Route::post('fresh/generallogin', 'App\Http\Controllers\GeneralController@postAuth');
+Route::post('fresh/general/login', 'App\Http\Controllers\Auth\LoginController@generalLogin');
 //マイページ表示
-Route::get('fresh/generalmypage', 'App\Http\Controllers\GeneralController@generalmypage');
+Route::get('fresh/general/mypage', 'App\Http\Controllers\GeneralController@mypage');
 
 //一般ユーザー新規登録
 Route::get('signup/add', 'App\Http\Controllers\GeneralController@signupadd');
 Route::post('post/create', 'App\Http\Controllers\GeneralController@signupcreate');
 
 //買い物リストトップ画面表示
-Route::get('fresh/orders', 'App\Http\Controllers\GeneralController@orderstop');
+Route::get('fresh/general/orders', 'App\Http\Controllers\GeneralController@orderstop');
 //買い物リスト追加画面表示
-Route::get('fresh/ordersadd', 'App\Http\Controllers\GeneralController@ordersadd');
+Route::get('fresh/general/ordersadd', 'App\Http\Controllers\GeneralController@ordersadd');
 //野菜の買い物リスト追加画面
-Route::get('fresh/vegeadd2', 'App\Http\Controllers\GeneralController@vegeadd2');
+Route::get('fresh/general/vegeadd2', 'App\Http\Controllers\GeneralController@vegeadd2');
 //肉の買い物リスト画面
-Route::get('fresh/meatadd2', 'App\Http\Controllers\GeneralController@meatadd2');
+Route::get('fresh/general/meatadd2', 'App\Http\Controllers\GeneralController@meatadd2');
 //魚の買い物リスト追加画面
-Route::get('fresh/fishadd2', 'App\Http\Controllers\GeneralController@fishadd2');
+Route::get('fresh/general/fishadd2', 'App\Http\Controllers\GeneralController@fishadd2');
 //乳製品の買い物リスト追加画面
-Route::get('fresh/dairyadd2', 'App\Http\Controllers\GeneralController@dairyadd2');
+Route::get('fresh/general/dairyadd2', 'App\Http\Controllers\GeneralController@dairyadd2');
 //その他の買い物リスト追加画面
-Route::get('fresh/otheradd2', 'App\Http\Controllers\GeneralController@otheradd2');
+Route::get('fresh/general/otheradd2', 'App\Http\Controllers\GeneralController@otheradd2');
 //買い物リストに追加
-Route::post('fresh/ordercreate', 'App\Http\Controllers\GeneralController@ordercreate');
+Route::post('fresh/general/ordercreate', 'App\Http\Controllers\GeneralController@ordercreate');
 //買い物リスト削除画面表示
-Route::get('fresh/ordersdel', 'App\Http\Controllers\GeneralController@ordersdel');
+Route::get('fresh/general/ordersdel', 'App\Http\Controllers\GeneralController@ordersdel');
 //買い物リストから削除
-Route::post('fresh/ordersdel', 'App\Http\Controllers\GeneralController@ordersremove');
+Route::post('fresh/general/ordersdel', 'App\Http\Controllers\GeneralController@ordersremove');
 //買い物リスト購入チェック画面表示
-Route::get('fresh/ordersbuy','App\Http\Controllers\GeneralController@ordersbuy');
+Route::get('fresh/general/ordersbuy','App\Http\Controllers\GeneralController@ordersbuy');
 //買い物リストの購入チェック
-Route::post('fresh/ordersbuy','App\Http\Controllers\GeneralController@ordersbuycheck');
+Route::post('fresh/general/ordersbuy','App\Http\Controllers\GeneralController@ordersbuycheck');
 
 
 //冷蔵庫の在庫登録トップ画面表示
-Route::get('fresh/stockaddtop', 'App\Http\Controllers\GeneralController@stockaddtop');
+Route::get('fresh/general/stockaddtop', 'App\Http\Controllers\GeneralController@stockaddtop');
 //野菜の追加画面
-Route::get('fresh/vegeadd', 'App\Http\Controllers\GeneralController@vegeadd');
+Route::get('fresh/general/vegeadd', 'App\Http\Controllers\GeneralController@vegeadd');
 //肉の追加画面
-Route::get('fresh/meatadd', 'App\Http\Controllers\GeneralController@meatadd');
+Route::get('fresh/general/meatadd', 'App\Http\Controllers\GeneralController@meatadd');
 //魚の追加画面
-Route::get('fresh/fishadd', 'App\Http\Controllers\GeneralController@fishadd');
+Route::get('fresh/general/fishadd', 'App\Http\Controllers\GeneralController@fishadd');
 //乳製品の追加画面
-Route::get('fresh/dairyadd', 'App\Http\Controllers\GeneralController@dairyadd');
+Route::get('fresh/general/dairyadd', 'App\Http\Controllers\GeneralController@dairyadd');
 //その他の追加画面
-Route::get('fresh/otheradd', 'App\Http\Controllers\GeneralController@otheradd');
+Route::get('fresh/general/otheradd', 'App\Http\Controllers\GeneralController@otheradd');
 
 //冷蔵庫の在庫登録
-Route::post('fresh/stockcreate', 'App\Http\Controllers\GeneralController@stockcreate');
+Route::post('fresh/general/stockcreate', 'App\Http\Controllers\GeneralController@stockcreate');
 
 //冷蔵庫の在庫一覧表示
-Route::get('fresh/stocktop', 'App\Http\Controllers\GeneralController@stocktop');
+Route::get('fresh/general/stocktop', 'App\Http\Controllers\GeneralController@stocktop');
 //冷蔵庫の野菜の在庫を表示
-Route::get('fresh/vegeview', 'App\Http\Controllers\GeneralController@vegeview');
+Route::get('fresh/general/vegeview', 'App\Http\Controllers\GeneralController@vegeview');
 //冷蔵庫の肉の在庫を表示
-Route::get('fresh/meatview', 'App\Http\Controllers\GeneralController@meatview');
+Route::get('fresh/general/meatview', 'App\Http\Controllers\GeneralController@meatview');
 //冷蔵庫の魚の在庫を表示
-Route::get('fresh/fishview', 'App\Http\Controllers\GeneralController@fishview');
+Route::get('fresh/general/fishview', 'App\Http\Controllers\GeneralController@fishview');
 //冷蔵庫の乳製品の在庫を表示
-Route::get('fresh/dairyview', 'App\Http\Controllers\GeneralController@dairyview');
+Route::get('fresh/general/dairyview', 'App\Http\Controllers\GeneralController@dairyview');
 //冷蔵庫のその他の在庫を表示
-Route::get('fresh/otherview', 'App\Http\Controllers\GeneralController@otherview');
+Route::get('fresh/general/otherview', 'App\Http\Controllers\GeneralController@otherview');
 //冷蔵庫の在庫の削除画面表示
-Route::get('fresh/stockdel', 'App\Http\Controllers\GeneralController@stockdel');
+Route::get('fresh/general/stockdel', 'App\Http\Controllers\GeneralController@stockdel');
 //野菜の在庫の削除画面表示
-Route::get('fresh/vegedel', 'App\Http\Controllers\GeneralController@vegedel');
+Route::get('fresh/general/vegedel', 'App\Http\Controllers\GeneralController@vegedel');
 //肉の在庫の削除画面表示
-Route::get('fresh/meatdel', 'App\Http\Controllers\GeneralController@meatdel');
+Route::get('fresh/general/meatdel', 'App\Http\Controllers\GeneralController@meatdel');
 //魚の在庫の削除画面表示
-Route::get('fresh/fishdel', 'App\Http\Controllers\GeneralController@fishdel');
+Route::get('fresh/general/fishdel', 'App\Http\Controllers\GeneralController@fishdel');
 //乳製品の在庫の削除画面表示
-Route::get('fresh/dairydel', 'App\Http\Controllers\GeneralController@dairydel');
+Route::get('fresh/general/dairydel', 'App\Http\Controllers\GeneralController@dairydel');
 //その他の在庫の削除画面表示
-Route::get('fresh/otherdel', 'App\Http\Controllers\GeneralController@otherdel');
+Route::get('fresh/general/otherdel', 'App\Http\Controllers\GeneralController@otherdel');
 //冷蔵庫の在庫から削除
-Route::post('fresh/stockdel', 'App\Http\Controllers\GeneralController@stockremove');
+Route::post('fresh/general/stockdel', 'App\Http\Controllers\GeneralController@stockremove');
 //冷蔵庫の中身の数量変更画面表示
-Route::get('fresh/stockedit', 'App\Http\Controllers\GeneralController@stockedit');
+Route::get('fresh/general/stockedit', 'App\Http\Controllers\GeneralController@stockedit');
 //野菜の在庫の数量変更画面表示
-Route::get('fresh/vegeedit', 'App\Http\Controllers\GeneralController@vegeedit');
+Route::get('fresh/general/vegeedit', 'App\Http\Controllers\GeneralController@vegeedit');
 //肉の在庫の数量変更画面表示
-Route::get('fresh/meatedit', 'App\Http\Controllers\GeneralController@meatedit');
+Route::get('fresh/general/meatedit', 'App\Http\Controllers\GeneralController@meatedit');
 //魚の在庫の数量変更画面表示
-Route::get('fresh/fishedit', 'App\Http\Controllers\GeneralController@fishedit');
+Route::get('fresh/general/fishedit', 'App\Http\Controllers\GeneralController@fishedit');
 //乳製品の在庫の数量変更画面表示
-Route::get('fresh/dairyedit', 'App\Http\Controllers\GeneralController@dairyedit');
+Route::get('fresh/general/dairyedit', 'App\Http\Controllers\GeneralController@dairyedit');
 //その他の在庫の数量変更画面表示
-Route::get('fresh/otheredit', 'App\Http\Controllers\GeneralController@otheredit');
+Route::get('fresh/general/otheredit', 'App\Http\Controllers\GeneralController@otheredit');
 //冷蔵庫の中身の数量変更(更新)
-Route::post('fresh/stockedit', 'App\Http\Controllers\GeneralController@stockupdate');
+Route::post('fresh/general/stockedit', 'App\Http\Controllers\GeneralController@stockupdate');
 
 //日付の入力画面にアクセス
-Route::get('fresh/date','App\Http\Controllers\GeneralController@searchdate');
+Route::get('fresh/general/date','App\Http\Controllers\GeneralController@searchdate');
 //入力した日付とDBから取得したデータを表示するページ
-Route::post('fresh/search','App\Http\Controllers\GeneralController@recipesearch');
+Route::post('fresh/general/search','App\Http\Controllers\GeneralController@recipesearch');
 Route::post('menus','App\Http\Controllers\GeneralController@confirmmenus');
 Route::post('save','App\Http\Controllers\GeneralController@menuscreate');
 Route::get('end','App\Http\Controllers\GeneralController@end');
 
-
-
-
-
-Route::get('fresh/menu', 'App\Http\Controllers\GeneralController@menufind');
-Route::post('fresh/menu', 'App\Http\Controllers\GeneralController@menusearch');
+Route::get('fresh/general/menu', 'App\Http\Controllers\GeneralController@menufind');
+Route::post('fresh/general/menu', 'App\Http\Controllers\GeneralController@menusearch');
 
 
 //お問い合わせ入力
@@ -147,38 +143,46 @@ Route::post('jissyu8', 'App\Http\Controllers\Jissyu4_3Controller@post');
 
 
 //企業ユーザー
-Route::get('fresh/login', 'App\Http\Controllers\TeamcController@getAuth');
-Route::post('fresh/login', 'App\Http\Controllers\TeamcController@postAuth');
-Route::get('fresh/companymypage', 'App\Http\Controllers\TeamcController@mypage');
-Route::post('fresh/companymypage', 'App\Http\Controllers\TeamcController@mypage');
+Route::get('fresh/company/login', 'App\Http\Controllers\TeamcController@getAuth');
+Route::post('fresh/company/login', 'App\Http\Controllers\TeamcController@postAuth');
+Route::get('fresh/company/mypage', 'App\Http\Controllers\TeamcController@mypage');
+Route::post('fresh/company/mypage', 'App\Http\Controllers\TeamcController@mypage');
 
 //企業ユーザー新規登録
 Route::get('new', 'App\Http\Controllers\TeamcController@new');
 Route::post('post/create2', 'App\Http\Controllers\TeamcController@create2');
 
+//お知らせ送信履歴を表示する画面
+Route::get('fresh/infohistory', 'App\Http\Controllers\TeamcController@infohistory');
+Route::post('fresh/infohistory', 'App\Http\Controllers\TeamcController@infohistory');
 
-Route::get('fresh/infocomfirm', 'App\Http\Controllers\InfoController@index');
-Route::post('fresh/infocomfirm', 'App\Http\Controllers\InfoController@post');
+//お知らせ情報作成画面
+Route::get('fresh/company/info', 'App\Http\Controllers\TeamcController@infoadd');
+Route::post('fresh/company/info', 'App\Http\Controllers\TeamcController@infocreate');
+//お知らせフォーム送信完了画面
+Route::get('fresh/company/infofinish', 'App\Http\Controllers\TeamcController@infocomplete');
+Route::post('fresh/company/infofinish', 'App\Http\Controllers\TeamcController@post');
 
-Route::get('fresh/info', 'App\Http\Controllers\InfoconfirmController@index');
-Route::post('post/info', 'App\Http\Controllers\InfoconfirmController@info');
-
-Route::get('fresh/infofinish', 'App/Http/Controllers/InfofinishController@index');
-Route::post('fresh/infofinish', 'App/Http/Controllers/InfofinishController@post');
 
 Route::get('fresh/signup', 'App\Http\Controllers\TeamcController@signup');
 Route::post('fresh/signupconfirm', 'App\Http\Controllers\TeamcController@signupconfirm');
 Route::post('fresh/signupfinish', 'App\Http\Controllers\TeamcController@signupfinish');
 
-Route::get('fresh/companysupport', 'App\Http\Controllers\TeamcController@companysupport');
-Route::post('fresh/companysupportconfirm', 'App\Http\Controllers\TeamcController@companysupportconfirm');
-Route::post('fresh/companysupportfinish', 'App\Http\Controllers\TeamcController@companysupportfinish');
+//お問い合わせフォーム表示
+Route::get('fresh/company/support', 'App\Http\Controllers\TeamcController@companysupport');
+//お問い合わせ内容確認画面表示
+Route::post('fresh/company/supportconfirm', 'App\Http\Controllers\TeamcController@companysupportconfirm');
+//お問い合わせ完了画面表示
+Route::post('fresh/company/supportfinish', 'App\Http\Controllers\TeamcController@companysupportfinish');
 
 Route::get('fresh/resetmail', 'App\Http\Controllers\TeamcController@resetmail');
 Route::post('fresh/resetmailconfirm', 'App\Http\Controllers\TeamcController@resetmailconfirm');
 Route::post('fresh/resetmailfinish', 'App\Http\Controllers\TeamcController@resetmailfinish');
-Route::get('fresh/areachoice', 'App\Http\Controllers\TeamcController@areachoice');
-Route::post('fresh/areachoice', 'App\Http\Controllers\TeamcController@areaview');
+
+//売り上げを表示する対象の範囲を選択
+Route::get('fresh/company/datachoice', 'App\Http\Controllers\TeamcController@datachoice');
+//店舗別売り上げを表示
+Route::post('fresh/company/dataview', 'App\Http\Controllers\TeamcController@dataview');
 
 //パスワードリセット
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -251,13 +255,73 @@ Route::post('companysupport/remove', 'App\Http\Controllers\CompanysupportControl
 
 
 
+//管理(ManagementController)
+//ログイン画面
+Route::get('hello2/auth', 'App\Http\Controllers\ManagementController@getAuth');
+Route::post('hello2/auth', 'App\Http\Controllers\ManagementController@postAuth');
+
+//トップ画面
+Route::get('hello2/top', 'App\Http\Controllers\ManagementController@top')
+        ->middleware('auth');
+Route::post('hello2/top', 'App\Http\Controllers\ManagementController@post');
 
 
+//一般ユーザー一覧
+Route::get('generaluser2', 'App\Http\Controllers\ManagementController@generaluserindex');
+Route::post('generaluser2/find', 'App\Http\Controllers\ManagementController@generaluserfind');
+
+Route::get('generaluser2/show', 'App\Http\Controllers\ManagementController@generalusershow');
+Route::get('generaluser2/add', 'App\Http\Controllers\ManagementController@generaluseradd');
+Route::post('generaluser2/create','App\Http\Controllers\ManagementController@generalusercreate');
+
+Route::get('generaluser2/edit', 'App\Http\Controllers\ManagementController@generaluseredit');
+Route::post('generaluser2/update', 'App\Http\Controllers\ManagementController@generaluserupdate');
+
+Route::get('generaluser2/del', 'App\Http\Controllers\ManagementController@generaluserdel');
+Route::post('generaluser2/remove', 'App\Http\Controllers\ManagementController@generaluserremove');
 
 
+//企業ユーザー一覧
+Route::get('company2', 'App\Http\Controllers\ManagementController@companyindex');
+Route::post('company2/find', 'App\Http\Controllers\ManagementController@companyfind');
 
+Route::get('company2/show', 'App\Http\Controllers\ManagementController@companyshow');
+Route::get('company2/add', 'App\Http\Controllers\ManagementController@companyadd');
+Route::post('company2/create','App\Http\Controllers\ManagementController@companycreate');
 
+Route::get('company2/edit', 'App\Http\Controllers\ManagementController@companyedit');
+Route::post('company2/update', 'App\Http\Controllers\ManagementController@companyupdate');
 
+Route::get('company2/del', 'App\Http\Controllers\ManagementController@companydel');
+Route::post('company2/remove', 'App\Http\Controllers\ManagementController@companyremove');
+
+//お問い合わせ一覧(企業ユーザー)
+Route::get('companysupport2', 'App\Http\Controllers\ManagementController@companysupportindex');
+Route::post('companysupport2/find', 'App\Http\Controllers\ManagementController@companysupportfind');
+
+Route::get('companysupport2/show', 'App\Http\Controllers\ManagementController@companysupportshow');
+Route::get('companysupport2/add', 'App\Http\Controllers\ManagementController@companysupportadd');
+Route::post('companysupport2/create','App\Http\Controllers\ManagementController@companysupportcreate');
+
+Route::get('companysupport2/edit', 'App\Http\Controllers\ManagementController@companysupportedit');
+Route::post('companysupport2/update', 'App\Http\Controllers\ManagementController@companysupportupdate');
+
+Route::get('companysupport2/del', 'App\Http\Controllers\ManagementController@companysupportdel');
+Route::post('companysupport2/remove', 'App\Http\Controllers\ManagementController@companysupportremove');
+
+//お問い合わせ一覧(一般ユーザー)
+Route::get('support2', 'App\Http\Controllers\ManagementController@supportindex');
+Route::post('support2/find', 'App\Http\Controllers\ManagementController@supportfind');
+
+Route::get('support2/show', 'App\Http\Controllers\ManagementController@supportshow');
+Route::get('support2/add', 'App\Http\Controllers\ManagementController@supportadd');
+Route::post('support2/create','App\Http\Controllers\ManagementController@supportcreate');
+
+Route::get('support2/edit', 'App\Http\Controllers\ManagementController@supportedit');
+Route::post('support2/update', 'App\Http\Controllers\ManagementController@supportupdate');
+
+Route::get('support2/del', 'App\Http\Controllers\ManagementController@supportdel');
+Route::post('support2/remove', 'App\Http\Controllers\ManagementController@supportremove');
 
 
 

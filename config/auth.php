@@ -46,6 +46,23 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        //管理者
+        'management' => [
+            'driver' => 'session',
+            'provider' => 'management'
+        ],
+
+        //企業
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'company'
+        ],
+
+        //一般
+        'general' => [
+            'driver' => 'session',
+            'provider' => 'general'
+        ],
     ],
 
     /*
@@ -76,6 +93,24 @@ return [
         //     'table' => 'users',
         //     'expire' => 60,
         // ],
+
+        //管理者
+        'management' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Management::class,
+        ],
+
+        //企業
+        'company' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Company::class,
+        ],
+
+        //一般
+        'general' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Generaluser::class,
+        ],
     ],
 
     /*
@@ -96,6 +131,30 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        //管理
+        'management' => [
+            'provider' => 'management',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        //企業
+        'company' => [
+            'provider' => 'company',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        //一般
+        'general' => [
+            'provider' => 'general',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

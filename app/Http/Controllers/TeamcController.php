@@ -16,7 +16,7 @@ class TeamcController extends Controller
     public function getAuth(Request $request)
     {
         $msg = 'ログインしてください。';
-        return view('fresh.login', ['msg' => $msg]);
+        return view('fresh.company.login', ['msg' => $msg]);
     }
 
     public function postAuth(Request $request)
@@ -24,14 +24,14 @@ class TeamcController extends Controller
         $email = $request->email;
         $password = $request->password;
         if (Auth::attempt(['email' => $email, 'password' => $password])){
-            return view('fresh.companymypage');
+            return view('fresh.company.mypage');
         } else {
-            return view('fresh.companymypage');
+            return view('fresh.company.mypage');
         }
     }
 
     public function mypage() {
-        return view('fresh.companymypage');
+        return view('fresh.company.mypage');
     }
 
     public function new(Request $request)
@@ -50,15 +50,12 @@ class TeamcController extends Controller
         return view('signup.done');
     }
 
-    public function areachoice()
+    public function datachoice()
     {
-        $data = [
-            'msg'=>'',
-        ];
-        return view('fresh.area.input', $data);
+        return view('fresh.company.toukei.input');
     }
 
-    public function areaview(Request $request)
+    public function dataview(Request $request)
     {
         //選択した条件を取得
         $ingredients_id = $request->ingredients_id;
@@ -133,7 +130,7 @@ class TeamcController extends Controller
         $item = DB::table('shopping_history')
                 ->join('generalusers', 'shopping_history.mail', '=', 'generalusers.email')
                 ->join('areas', 'generalusers.area_id', '=', 'areas.area_id')
-                ->join('companies', 'shopping_history.company_id', '=', 'companies.company_id')
+                ->leftjoin('companies', 'shopping_history.company_id', '=', 'companies.company_id')
                 ->where('shopping_history.ingredients_id', $ingredients_id);
 
         $item0 = $item->where('shopping_history.day', '>=', $request->startdate)
@@ -240,7 +237,7 @@ class TeamcController extends Controller
                     ->where('generalusers.birthday', '>=', $age2)
                     ->where('generalusers.birthday', '<=', $age1);
         }
-  
+        
         //店舗ごとに販売数量を求める
         $shopquantity = $item99
                         ->selectRaw('companies.company_name, sum(shopping_history.quantity) as total')
@@ -260,18 +257,18 @@ class TeamcController extends Controller
                           'area' => $selectedarea,
                           'age' => $selectedage);
 
-        return view('fresh.area.output', ['shopquantity' => $shopquantity, 'names' => $names, 'selected' => $selected]);
+        return view('fresh.company.toukei.output', ['shopquantity' => $shopquantity, 'names' => $names, 'selected' => $selected]);
     }
     
     public function companysupport()
     {
-        return view('fresh.companysupport');
+        return view('fresh.company.support.input');
     }
 
     public function companysupportconfirm(SupportRequest $request)
     {
         $data = $request->all();
-        return view('fresh.companysupportconfirm', ['data' => $data]);
+        return view('fresh.company.support.confirm', ['data' => $data]);
     }
 
     public function companysupportfinish(SupportRequest $request)
@@ -285,8 +282,81 @@ class TeamcController extends Controller
             'support_text' => $request->support_text,
         ];
         DB::table('companysupports')->insert($param);
-        return view('fresh.companysupportfinish', ['data' => $data]);
+        return view('fresh.company.support.finish', ['data' => $data]);
     }
+
+    //サービス情報作成画面
+    public function infoadd(Request $request)
+    {
+        //$items = DB::select('select station_name from stations' );
+        //return view('infoconfirm.input', ['items' => $items]);
+        $data = [
+            'msg'=>'',
+        ];
+        return view('fresh.company.info.input', $data);
+
+    }
+
+    public function infocreate(Request $request)
+    {
+        $param = [
+            'mail' => $request->mail,
+            'day' => $request->day,
+            'info_title' => $request->info_title,
+            'info_text' => $request->info_text,
+            'station_id' => $request->station_id,
+        ];
+        DB::table('info')->insert($param);
+
+        return view('fresh.infofinishinput');
+    }
+
+    public function image(Request $request, User $user) {
+
+        // バリデーション省略
+        $originalImg = $request->user_image;
+      
+          if($originalImg->isValid()) {
+            $filePath = $originalImg->store('public');
+            $user->image = str_replace('public/', '', $filePath);
+            $user->save();
+            return redirect("/user/{$user->id}")->with('user', $user);
+        }
+    }
+
+    public function post(Request $request)
+    {
+        $rules = [
+            'name' => 'required|max:10',
+            'adress' => 'required|max:20',
+            'login_id' => 'required|numeric|digits_between:8,16',
+            'password' => 'required|between:8,16',
+        ];
+        $messages = [
+            'name.required' => '名前は必ず入力して下さい。',
+            'name.max' => '名前は10文字以内で入力して下さい。',
+            'adress.required'  => '住所は必ず入力して下さい。',
+            'adress.max'  => '住所は20文字以内で入力して下さい。',
+            'login_id.required' => 'ログインIDは必ず入力して下さい。',
+            'login_id.numeric' => 'ログインIDは数字で入力して下さい。',
+            'login_id.digits_between' => 'ログインIDは8文字以上16文字以内で入力して下さい。',
+            'password.required' => 'パスワードは必ず入力して下さい。',
+            'password.between' => 'パスワードは8文字以上16文字以内で入力して下さい。',
+        ];
+        $validator = Validator::make($request->all(),$rules,$message);
+        if ($validator->fails()) {
+            return redirect('fresh/infoconfirm')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        //全データの取得
+        $data = $request->all();
+
+        return view('fresh.company.infoconfirm.output', ['data' => $data]);
+    }
+
+    //お知らせ送信履歴のメソッド部分
 
     public function infohistory(Request $request)
     {
@@ -300,22 +370,21 @@ class TeamcController extends Controller
                 companies.company_mail = :company_mail', $param);
                 $param = ['mail' => $request->session()->get('usermail')];
 
-        return view('fresh.infohistory', ['items' => $items]);
+        return view('fresh.company.infohistory', ['items' => $items]);
 
         $data = [
             'msg'=>'必要事項を記入してください。',
         ];
-        return view('fresh.infohistory', $data);
+        return view('fresh.company.infohistory', $data);
     }
 
-    public function post(Request $request)
+    public function infohistorypost(Request $request)
     {
         $data = [
             'name'=>$request->name,
             'mail'=>$request->mail,
             'age'=>$request->age
         ];
-        return view('fresh.infohistoryoutput', ['data'=>$data]);
+        return view('fresh.company.infohistoryoutput', ['data'=>$data]);
     }
-    
 }
