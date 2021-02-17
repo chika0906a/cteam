@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,15 +14,125 @@ class RecipedetailsTableSeeder extends Seeder
     {
         $param=[
             'recipe'=>'R0001',
-            'ingredients_id'=>1,
-            'quantity'=>100,
+            'ingredients_id'=>'I0001',
+            'quantity'=>1,
         ];
         DB::table('recipedetails')->insert($param);
         $param=[
             'recipe'=>'R0001',
-            'ingredients_id'=>2,
+            'ingredients_id'=>'I0002',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0001',
+            'ingredients_id'=>'I0015',
+            'quantity'=>2,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0001',
+            'ingredients_id'=>'I0016',
+            'quantity'=>200,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0002',
+            'ingredients_id'=>'I0016',
+            'quantity'=>200,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0002',
+            'ingredients_id'=>'I0007',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0003',
+            'ingredients_id'=>'I0001',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0003',
+            'ingredients_id'=>'I0002',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0003',
+            'ingredients_id'=>'I0017',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0003',
+            'ingredients_id'=>'I0004',
             'quantity'=>150,
         ];
         DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0003',
+            'ingredients_id'=>'I0018',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0003',
+            'ingredients_id'=>'I0016',
+            'quantity'=>150,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0004',
+            'ingredients_id'=>'I0001',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0004',
+            'ingredients_id'=>'I0002',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0004',
+            'ingredients_id'=>'I0017',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0004',
+            'ingredients_id'=>'I0004',
+            'quantity'=>150,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0004',
+            'ingredients_id'=>'I0019',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0004',
+            'ingredients_id'=>'I0010',
+            'quantity'=>200,
+        ];
+        DB::table('recipedetails')->insert($param);
+        $param=[
+            'recipe'=>'R0005',
+            'ingredients_id'=>'I0007',
+            'quantity'=>2,
+        ];
+        DB::table('recipedetails')->insert($param);
+        
+        $param=[
+            'recipe'=>'R0005',
+            'ingredients_id'=>'I0003',
+            'quantity'=>1,
+        ];
+        DB::table('recipedetails')->insert($param);
+        
     }
 }

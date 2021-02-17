@@ -3,13 +3,14 @@
 @section('title', '')
 
 @section('menu_title')
+<br>
 お問い合わせ詳細画面(企業ユーザー）
 
 @endsection
 @section('content')
    <table>
-   <tr><th>Support_num</th><th>Company_mail</th><th>Support_mail</th>
-   <th>Day</th><th>Support_text</th>
+   <tr><th>お問い合わせ番号</th><th>企業Eメール</th><th>連絡用Eメール</th>
+   <th>日付</th><th>お問い合わせ内容</th>
        <tr>
            <td>{{$item->support_num}}</td>
            <td>{{$item->mail}}</td>

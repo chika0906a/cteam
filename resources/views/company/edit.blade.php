@@ -3,6 +3,7 @@
 @section('title', '')
 
 @section('menu_title')
+<br>
 企業ユーザー更新画面
 @endsection
 
@@ -16,16 +17,15 @@
     </ul>
 </div>
 @endif
-   <form action="/company/update" method="post">
+   <form action="/company2/update" method="post">
    <table>
       @csrf
       <input type="hidden" name="company_id" value="{{$item->company_id}}">
-      
-      <tr><th>company_id: </th><td><input type="text" name="company_id" value="{{old('company_id')}}"></td></tr>
-    <tr><th>password: </th><td><input type="text" name="password" value="{{old('password')}}"></td></tr>
-    <tr><th>company_name: </th><td><input type="text" name="company_name" value="{{old('company_name')}}"></td></tr>
-    <tr><th>company_mail: </th><td><input type="text" name="company_mail" value="{{old('company_mail')}}"></td></tr>
-    <tr><th>area_id: </th><td><input type="text" name="area_id" value="{{old('area_id')}}"></td></tr>
+
+    <tr><th>企業名: </th><td><input type="text" name="company_name" value="{{$item->company_name}}"></td></tr>
+    <tr><th>企業Eメール: </th><td><input type="text" name="company_mail" value="{{$item->company_mail}}"></td></tr>
+    <tr><th>パスワード: </th><td><input type="text" name="password" value="{{$item->password}}"></td></tr>
+    <tr><th>area_id: </th><td><input type="text" name="area_id" value="{{$item->area_id}}"></td></tr>
 
     <tr><th></th><td><input type="submit" value="更新"></td></tr>
    </table>

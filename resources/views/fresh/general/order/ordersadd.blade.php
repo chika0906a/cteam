@@ -33,14 +33,19 @@ ECHO '<FONT COLOR="white">買い物リスト </FONT>';
 <div class="disp_img">
  <a href='/fresh/general/vegeadd2'>
  <img src='../../images/2野菜.png' width="50" height="80">
+ </a>
  <a href='/fresh/general/meatadd2'>
  <img src='../../images/2肉.png' width="50" height="80">
+ </a>
  <a href='/fresh/general/fishadd2'>
  <img src='../../images/2魚.png' width="50" height="80">
+ </a>
  <a href='/fresh/general/dairyadd2'>
  <img src='../../images/2乳製品.png' width="50" height="80">
+ </a>
  <a href='/fresh/general/otheradd2'>
  <img src='../../images/2その他.png' width="50" height="80">
+ </a>
 </div>
 </div>
 </div>

@@ -31,13 +31,14 @@ ECHO '<FONT COLOR="white">冷蔵庫の中身一覧 </FONT>';
 
 @section('content2')
   <table>
-  <tr><th>名前</th><th>個数</th></tr>
     @foreach($items as $item)
       <tr>
           <td>{{$item->ingredients_name}}</td>
           <td>{{$item->quantity}}</td>
       </tr>
+      <br>
     @endforeach
+    <br>
   </table>
 <div class="disp_img">
  <a href="/fresh/general/stockdel">削除</a>
@@ -49,14 +50,23 @@ ECHO '<FONT COLOR="white">冷蔵庫の中身一覧 </FONT>';
 
  @section('content3')
 <div class="disp_img">
-  <a href=''>
+  <a href='/fresh/general/vegeview'>
   <img src='../../images/2野菜.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/meatview'>
   <img src='../../images/2肉.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/fishview'>
   <img src='../../images/2魚.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/dairyview'>
   <img src='../../images/2乳製品.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/otherview'>
   <img src='../../images/2その他.png' width="80" height="180">
+  </a>
 </div>
 <br><p><br><p><br><p>
 <br><p>
-<button type="button" onclick="history.back()"><img src='../../images/マイページに戻るボタン.png'/></button>
+<a href="/fresh/general/mypage"><img src='../../images/マイページに戻るボタン.png'/></button>
 @endsection

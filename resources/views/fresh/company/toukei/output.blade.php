@@ -12,10 +12,10 @@
         @endforeach
     @endforeach
     <h3>選択内容</h3>
-    {{$selected['startdate']}}から{{$selected['enddate']}}<br>
-    性別：{{$selected['gender']}}<br>
-    居住人数：{{$selected['people']}}<br>
-    地域：{{$selected['area']}}<br>
+    {{$selected['startdate']}}から{{$selected['enddate']}}<br><p>
+    性別：{{$selected['gender']}}<br><p>
+    居住人数：{{$selected['people']}}<br><p>
+    地域：{{$selected['area']}}<br><p>
     年代：{{$selected['age']}}<br>
     <table align="center" style="color:#ffffff" >
         <tr>
@@ -35,8 +35,10 @@
 @endsection
 
 @section('content1')
-    <a href="/fresh/company/mypage">マイページに戻る</a>
-    <button type="button" onclick="history.back()">前の画面に戻る</button> 
+
+    <a href="/fresh/company/mypage" class="circle_spread_btn"style=font-size:15pt;>🏠<i class="fas fa-home fa-fw"></i></a>
+    <a href="javascript:history.back()" class="pochitto_btn_blue" style=font-size:10pt;>戻る</a>
+
 @endsection
 
 @section('footer')

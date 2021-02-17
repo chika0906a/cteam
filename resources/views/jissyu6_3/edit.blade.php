@@ -1,9 +1,10 @@
 @extends('layouts.jissyu')
 
-@section('title', 'Jissyu')
+@section('title', '')
 
 @section('menu_title')
-ユーザー情報更新画面
+<br>
+管理ユーザー情報更新画面
 @endsection
 
 @section('content')
@@ -21,22 +22,18 @@
       @csrf
       <input type="hidden" name="id" value="{{$item->id}}">
       
-      <tr><th>id: </th><td><input type="number" name="id" value="{{old('id')}}"></td></tr>
-    <tr><th>name: </th><td><input type="text" name="name" value="{{old('name')}}"></td></tr>
-    <tr><th>email: </th><td><input type="text" name="email" value="{{old('email')}}"></td></tr>
-    <tr><th>password: </th><td><input type="text" name="password" value="{{old('password')}}"></td></tr>
-    <tr><th>gender: </th><td><input type="text" name="gender" value="{{old('gender')}}"></td></tr>
-    <tr><th>date: </th><td><input type="number" name="date" value="{{old('date')}}"></td></tr>
-    <tr><th>area_id: </th><td><input type="text" name="area_id" value="{{old('area_id')}}"></td></tr>
-    <tr><th>station_id: </th><td><input type="text" name="station_id" value="{{old('station_id')}}"></td></tr>
-    <tr><th>people_ind: </th><td><input type="number" name="people_ind" value="{{old('people_ind')}}"></td></tr>
+      <tr><th>id: </th><td><input type="number" name="id" value="{{$item->id}}"></td></tr>
+    <tr><th>name: </th><td><input type="text" name="name" value="{{$item->name}}"></td></tr>
+    <tr><th>email: </th><td><input type="text" name="email" value="{{$item->email}}"></td></tr>
+    <tr><th>password: </th><td><input type="text" name="password" value="{{$item->password}}"></td></tr>
 
 
     <tr><th></th><td><input type="submit" value="更新"></td></tr>
    </table>
+   <td><button type="button" onclick="history.back()">戻る</button></td>
    </form>
 @endsection
 
 @section('footer')
-copyright 2020 東京情報クリエイター工学院専門学校.
+
 @endsection

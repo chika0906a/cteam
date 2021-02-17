@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,13 +14,19 @@ class StationsTableSeeder extends Seeder
     {
         $param = [
             'station_id' => 'S0001',
-            'station_name' => '横浜駅',
+            'station_name' => '東神奈川駅',
         ];
         DB::table('stations')->insert($param);
 
         $param = [
             'station_id' => 'S0002',
-            'station_name' => '東神奈川駅',
+            'station_name' => '横浜駅',
+        ];
+        DB::table('stations')->insert($param);
+
+        $param = [
+            'station_id' => 'S0003',
+            'station_name' => '上大岡駅',
         ];
         DB::table('stations')->insert($param);
     }

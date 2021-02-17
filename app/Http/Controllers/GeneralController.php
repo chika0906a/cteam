@@ -11,10 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 
-
-use App\Http\Requests\HelloRequest;
 use Validator;
-use App\Person;
+use App\Models\Person;
 use Carbon\Carbon;
 
 class GeneralController extends Controller
@@ -38,6 +36,18 @@ class GeneralController extends Controller
             $request->session()->put('usermail', $email);
             return view('fresh.general.mypage');
         }
+    }
+
+    public function loginform()
+    {
+        return view('fresh.general.login');
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->email;
+        $request->session()->put('usermail', $email);
+        return $this->mypage();
     }
 
     public function mypage(Request $request)
@@ -76,6 +86,46 @@ class GeneralController extends Controller
         //ユーザー毎の買い物リストのデータを抽出
         $items = DB::select('select * from orders inner join ingredients on orders.ingredients_id = ingredients.ingredients_id where orders.mail = :mail', $param);
         return view('fresh.general.order.orderstop', ['items' => $items]);
+    }
+
+    //買い物リスト中の野菜カテゴリの食材を表示
+    public function vegeview2(Request $request)
+    {
+        $param = ['mail' => $request->session()->get('usermail')];
+        $items = DB::select('SELECT * from orders INNER JOIN ingredients ON orders.ingredients_id = ingredients.ingredients_id WHERE ingredients_category = "野菜" AND orders.mail = :mail', $param);
+            return view('fresh.general.order.vegeview')->with(['items' => $items]);
+    }
+
+    //買い物リスト中の肉カテゴリの食材を表示
+    public function meatview2(Request $request)
+    {
+        $param = ['mail' => $request->session()->get('usermail')];
+        $items = DB::select('SELECT * from orders INNER JOIN ingredients ON orders.ingredients_id = ingredients.ingredients_id WHERE ingredients_category = "肉" AND orders.mail = :mail', $param);
+            return view('fresh.general.order.meatview')->with(['items' => $items]);
+    }
+
+    //買い物リスト中の魚カテゴリの食材を表示
+    public function fishview2(Request $request)
+    {
+        $param = ['mail' => $request->session()->get('usermail')];
+        $items = DB::select('SELECT * from orders INNER JOIN ingredients ON orders.ingredients_id = ingredients.ingredients_id WHERE ingredients_category = "魚" AND orders.mail = :mail', $param);
+            return view('fresh.general.order.fishview')->with(['items' => $items]);
+    }
+
+    //買い物リスト中の乳製品カテゴリの食材を表示
+    public function dairyview2(Request $request)
+    {
+        $param = ['mail' => $request->session()->get('usermail')];
+        $items = DB::select('SELECT * from orders INNER JOIN ingredients ON orders.ingredients_id = ingredients.ingredients_id WHERE ingredients_category = "乳製品" AND orders.mail = :mail', $param);
+            return view('fresh.general.order.dairyview')->with(['items' => $items]);
+    }
+
+    //買い物リスト中のその他カテゴリの食材を表示
+    public function otherview2(Request $request)
+    {
+        $param = ['mail' => $request->session()->get('usermail')];
+        $items = DB::select('SELECT * from orders INNER JOIN ingredients ON orders.ingredients_id = ingredients.ingredients_id WHERE ingredients_category = "その他" AND orders.mail = :mail', $param);
+            return view('fresh.general.order.otherview')->with(['items' => $items]);
     }
 
     //買い物リスト追加画面表示
@@ -211,6 +261,7 @@ class GeneralController extends Controller
         //買い物リストトップ画面にリダイレクト
         return redirect('/fresh/general/orders');
     }
+
     //冷蔵庫の在庫一覧
     public function stocktop(Request $request)
     {
@@ -462,8 +513,6 @@ class GeneralController extends Controller
         return redirect('/fresh/general/stocktop');
     }
 
-    
-
     public function searchdate(Request $request)
     {
         $date = Carbon::now()->toDateTimeString();
@@ -475,13 +524,14 @@ class GeneralController extends Controller
         if($request->isMethod('post'))
         {
             $recipearray = [];
-            $items = DB::select('SELECT DISTINCT recipe_name
+            $items = DB::select('SELECT DISTINCT recipetitle.recipe, recipe_name
             FROM recipetitle, stocks, recipedetails 
                 WHERE stocks.ingredients_id = recipedetails.ingredients_id AND
                 recipedetails.recipe = recipetitle.recipe');
                 //日付のデータ 
             foreach ($items as $item){
-                $recipearray[] = $item->recipe_name;
+                $recipearray[] = $item->recipe; 
+                $recipename[] = $item->recipe_name;
             }
             $date = $request->input('theDate');
             //日の数
@@ -491,45 +541,21 @@ class GeneralController extends Controller
             'date' => $date,
             'count'=> $count,
             'recipearray' => $recipearray,
+            'recipename'=>$recipename,
         ];
         return view('fresh.general.recipe.recipesearch', $data);
-    }
-
-    public function confirmmenus(Request $request)
-    {
-        if($request->isMethod('post'))
-        {
-            $recipe = $request->input('recipe');
-            $date = $request->input('theDate');
-            $count = $request->input('count');
-            $menusdate = [];
-            $menusrecipe = [];
-            for($i=0;$i<($count);$i++){
-                $menusdate[] = $date;
-                $menusrecipe[] = $recipe[$date ++];
-            }
-            $data = [
-                'count' => $count,
-                'date' => $menusdate,
-                'recipe' => $menusrecipe
-            ];
-        }
-            return view('fresh.general.recipe.confirmmenus', $data);       
     }
 
     public function menuscreate(Request $request)
     {
         //チェックボックスで選択された食材の配列を取得
-        $items = $request->input('date');
+        $items = $request->input('theDate');
+        $count = $request->input('count');
         foreach((array)$items as $item){
-            $param1 = ['recipe_name' => $request->recipe[$item]];
-            $recipe_id = DB::select('SELECT recipe FROM recipetitle where recipe_name = :recipe_name', $param1);
-            $recipe_id2 = DB::table($recipe_id)->first()->get('recipe');
-
             $param = [
                 'mail' => $request->session()->get('usermail'),
                 'day' => $item,
-                'recipe' => $recipe_id2,
+                'recipe' => $request->recipe[$item],
             ];
             //ユーザーのメールアドレス・食材リスト・数量をstocksテーブルに保存
             DB::table('menus')->insert($param);
@@ -538,7 +564,7 @@ class GeneralController extends Controller
     }
     public function end(Request $request)
     {
-        return view('fresh.general.recipe.recipesearch.end');
+        return view('fresh.general.recipe.end');
     }
 
 
@@ -571,13 +597,15 @@ class GeneralController extends Controller
     //お問い合わせ内容をサポートテーブルに保存
     public function supportcreate(Request $request)
     {
+        //今日の日にちを0000-00-00の形で取得
+        $day = now()->format('Y-m-d');
         $param = [
             'mail' => $request->mail,
             'support_mail' => $request->support_mail,
-            'day' => $request->day,
+            'day' => $day,
             'support_text' => $request->support_text,
         ];
-        DB::table('support')->insert($param);
+        DB::table('supports')->insert($param);
 
         return view('fresh.general.support.complete');
     }

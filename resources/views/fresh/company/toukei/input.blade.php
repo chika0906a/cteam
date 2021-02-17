@@ -13,28 +13,11 @@ ECHO '<FONT COLOR="white"> 範囲選択画面 </FONT>';
        @csrf
         <select name="ingredients_id">
             <option value="統計データを表示する食材" selected>🔍統計データを表示する食材</option>
-            <option value="I0001">にんじん</option>
-            <option value="I0002">じゃがいも</option>
-            <option value="I0003">たまねぎ</option>
-            <option value="I0004">大根</option>
-            <option value="I0005">ほうれん草</option>
-            <option value="I0006">鶏肉</option>
-            <option value="I0007">牛肉</option>
-            <option value="I0008">豚肉</option>
-            <option value="I0009">ブリ</option>
-            <option value="I0010">サケ</option>
-            <option value="I0011">カレイ</option>
-            <option value="I0012">牛乳</option>
-            <option value="I0013">チーズ</option>
-            <option value="I0014">バター</option>
-            <option value="I0015">生クリーム</option>
-            <option value="I0016">昆布</option>
-            <option value="I0017">味噌</option>
-            <option value="I0018">マヨネーズ</option>
-            <option value="I0019">卵</option>
-            <option value="I0020">豆腐</option>
-            <option value="I0021">カレールー</option>
-            <option value="I0022">醤油</option>
+            <?php
+            foreach($ingredients as $item){
+                print('<option value="' . $item->ingredients_id . '">' . $item->ingredients_name . '</option>');
+            }
+            ?>
         </select>
         <div class="disp_img">
         <img src='../../images/日付.png'/>
@@ -70,20 +53,14 @@ ECHO '<FONT COLOR="white"> 範囲選択画面 </FONT>';
         <div class="disp_img">
         <img src='../../images/地域.png'/>
         </div>
-            <h5>選択しない場合は「選択しない」を入力してください</h5>
-            <!--<ul><input type="checkbox" value="noarea" name="area_name">選択しない</ul>
-            <ul>
-                <select name="parentS" onchange="createChildOptions(this.form)" style="width:80px;height:30px">
-                <option value="">都道府県</option>
-                <option value="tokyo">東京都</option>
-                <option value="kanagawa">神奈川県</option>
-                <option value="saitama">埼玉県</option>
-                </select>
-            </ul>
-            -->
-            <ul>
-                <input type="text" name="area_name" placeholder="神奈川県横浜市南区"></td>
-            </ul>
+            <select name="area_id">
+            <option value="" selected>選択しない</option>
+            <?php
+            foreach($areas as $item){
+                print('<option value="' . $item->area_id . '">' . $item->area_name . '</option>');
+            }
+            ?>
+            </select>
             
             <table>
             <div class="disp_img">
@@ -104,7 +81,8 @@ ECHO '<FONT COLOR="white"> 範囲選択画面 </FONT>';
         <input type="submit" value="抽出">
     </form>
     <br>
-    <a href="/fresh/company/mypage">マイページに戻る</a>
+    <a href="javascript:history.back()" class="pochitto_btn_blue" style=font-size:10pt;>戻る</a>
+
 @endsection
 
 @section('footer')

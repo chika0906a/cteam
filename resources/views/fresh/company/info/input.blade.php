@@ -13,8 +13,6 @@
 
 
 @section('content')
-<form action="/fresh/company/info" method="post">
-       @csrf
        <h1><?PHP
 ECHO '<FONT COLOR="aqua"> ▲</FONT>';
 
@@ -45,17 +43,18 @@ ECHO '<FONT COLOR="aqua"> ▲</FONT>';
 
 
 <div class="element_wrap">
-<form action="/post/info" method="post">
+<form action="/fresh/company/infoconfirm" method="post">
        @csrf
         <select name="station_id">
-            <option value="S0001">横浜駅</option>
-            <option value="S0002">東神奈川駅</option>
-            <option value="S0003">新宿駅</option>
-            <option value="S0004">渋谷駅</option>
+            <option value="" selected>駅を選択してください</option>
+            <?php
+            foreach($stations as $item){
+                print('<option value="' . $item->station_id . '">' . $item->station_name . '</option>');
+            }
+            ?>
         </select>
 
-<input type="text" name="mail"style="width:500px; height:20px";  value=""placeholder="登録メールアドレス">
-<input type="date" name="day"style="width:500px; height:20px";  value=""placeholder="日付">
+       <input type="date" name="day"style="width:500px; height:20px";  value=""placeholder="日付">
        
        <input type="text" name="info_title"style="width:500px; height:20px";  value=""placeholder="タイトル">
        @if ($errors->has('stitle'))
@@ -72,24 +71,21 @@ ECHO '<FONT COLOR="aqua"> ▲</FONT>';
       <input type="text" name="info_text" style="width:500px; height:300px";  value=""placeholder="内容"></td></tr>
       </div>
 
-      <input type="submit" value="送信">
+      <input type="submit" value="確認">
 </form>
 @endsection
 @section('content3')
-<p>上記の内容でよろしければ、「送信」を押してください。</p><br>
-<p>内容を変更したい場合は、「戻る」ボタンを押してください。</p>
    <br>
 
   <br>
   
- </a><br><a>
- <a href='info'>
- <img src='../images/戻る.png'/>
+ </a><br>
+
+ <a href="javascript:history.back()" class="pochitto_btn_blue" style=font-size:10pt;>戻る</a>
+
+
  </a>
 </div>
-
-@endsection
-@section('footer')
 
 @endsection
 </body>

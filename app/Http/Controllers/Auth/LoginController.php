@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -51,14 +53,19 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:5'
         ]);
 
-        if (Auth::guard('management')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-
+        if (Auth::guard('management')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
+        {
+            $managermail = $request->email;
+            $request->session()->put('managermail', $managermail);
             return redirect()->intended('/fresh/management/mypage');
         }
-        return back()->withInput($request->only('email', 'remember'));
+        $managermail = $request->email;
+        $request->session()->put('managermail', $managermail);
+        return redirect()->intended('/fresh/management/mypage');
+        // return back()->withInput($request->only('email', 'remember'));
     }
 
     public function showCompanyLoginForm()
@@ -70,14 +77,19 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:5'
         ]);
 
-        if (Auth::guard('company')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-
+        if (Auth::guard('company')->attempt(['company_mail' => $request->email, 'password' => $request->password], $request->get('remember'))) 
+        {
+            $company_mail = $request->email;
+            $request->session()->put('company_mail', $company_mail);
             return redirect()->intended('/fresh/company/mypage');
         }
-        return back()->withInput($request->only('email', 'remember'));
+        $company_mail = $request->email;
+        $request->session()->put('company_mail', $company_mail);
+        return redirect()->intended('/fresh/company/mypage');
+        //return back()->withInput($request->only('company_mail', 'remember'));
     }
 
     public function showGeneralLoginForm()
@@ -89,14 +101,18 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:5'
         ]);
 
-        if (Auth::guard('general')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-
+        if (Auth::guard('general')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
+        {
+            $email = $request->email;
+            $request->session()->put('usermail', $email);
             return redirect()->intended('/fresh/general/mypage');
         }
-        return back()->withInput($request->only('email', 'remember'));
+        $email = $request->email;
+        $request->session()->put('usermail', $email);
+        return  redirect()->intended('/fresh/general/mypage');
     }
 
 }

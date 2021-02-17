@@ -7,6 +7,34 @@
        color:#999; 
       background: linear-gradient(to right top, #888, #000000);
        }
+       .pochitto_btn_blue {
+	display: inline-block;
+	width: 160px;
+	padding: 2em;
+  
+	text-align: center;
+	text-decoration: none;
+	color: #fff;
+	background:#0C88CA;
+	border-bottom:4px solid #005691;
+	border-radius: 4px;
+	transition: .0s;
+  position: relative; /* 今の位置を基準 */
+  top: 0px; /* 上から0px */
+  left: -300px; /* 左から-300px */
+  right: 0px;
+  bottom: 0px;
+
+}
+.pochitto_btn_blue:hover {
+  
+	 cursor: pointer;
+	 text-decoration: none;
+	 background:#005691;
+	 transform: translate3d(0, 4px, 0);
+	 transition: .0s;
+	 border-bottom: none;
+}
     .disp_img{
       background-repeat:no-repeat;
       width:auto;
@@ -39,7 +67,7 @@
    
    
    .footer { text-align:right; font-size:10pt; margin:10px;
-       border-bottom:solid 1px #ccc; color:#ccc; }
+         #ccc; color:#ccc; }
        th {background-color:#999; color:fff; padding:5px 10px; }
        td {border: solid 1px #aaa; color:#999; padding:5px 10px; }
    </style>

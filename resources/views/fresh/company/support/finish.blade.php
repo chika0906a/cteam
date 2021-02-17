@@ -1,6 +1,6 @@
 @extends('layouts.fresh')
 
-@section('title', 'fresh')
+@section('title', '')
 
 @section('menu_title')
 メール送付完了画面
@@ -19,11 +19,12 @@
   </table>
   </form>
   <p>上記の内容で送信が完了しました。</p>
-  <p>マイページに戻るボタンを押してください。</p>
+  <p>🏠を押してください。</p>
 @endsection
 
 @section('content1')
-  <a href="/fresh/company/mypage">マイページに戻る</a>
+<a href="/fresh/company/mypage" class="circle_spread_btn"style=font-size:15pt;>🏠<i class="fas fa-home fa-fw"></i></a>
+<a href="javascript:history.back()" class="pochitto_btn_blue" style=font-size:10pt;>戻る</a>
 @endsection
 
 @section('footer')

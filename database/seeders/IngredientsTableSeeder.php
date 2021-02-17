@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,14 +13,116 @@ class IngredientsTableSeeder extends Seeder
     public function run()
     {
         $param=[
-            'ingredients_id'=>'1',
+            'ingredients_id'=>'I0001',
+            'ingredients_name'=>'にんじん',
+            'ingredients_category'=>'野菜',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0002',
+            'ingredients_name'=>'たまねぎ',
+            'ingredients_category'=>'野菜',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0003',
+            'ingredients_name'=>'大根',
+            'ingredients_category'=>'野菜',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0004',
             'ingredients_name'=>'鶏肉',
             'ingredients_category'=>'肉',
         ];
         DB::table('ingredients')->insert($param);
         $param=[
-            'ingredients_id'=>'2',
+            'ingredients_id'=>'I0005',
+            'ingredients_name'=>'牛肉',
+            'ingredients_category'=>'肉',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0006',
+            'ingredients_name'=>'豚肉',
+            'ingredients_category'=>'肉',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0007',
+            'ingredients_name'=>'ブリ',
+            'ingredients_category'=>'魚',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0008',
+            'ingredients_name'=>'カレイ',
+            'ingredients_category'=>'魚',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0009',
+            'ingredients_name'=>'タイ',
+            'ingredients_category'=>'魚',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0010',
+            'ingredients_name'=>'牛乳',
+            'ingredients_category'=>'乳製品',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0011',
+            'ingredients_name'=>'スライスチーズ',
+            'ingredients_category'=>'乳製品',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0012',
+            'ingredients_name'=>'生クリーム',
+            'ingredients_category'=>'乳製品',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0013',
+            'ingredients_name'=>'豆腐',
+            'ingredients_category'=>'その他',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0014',
+            'ingredients_name'=>'うどん',
+            'ingredients_category'=>'その他',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0015',
+            'ingredients_name'=>'卵',
+            'ingredients_category'=>'その他',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0016',
             'ingredients_name'=>'米',
+            'ingredients_category'=>'その他',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0017',
+            'ingredients_name'=>'じゃがいも',
+            'ingredients_category'=>'野菜',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0018',
+            'ingredients_name'=>'カレールー',
+            'ingredients_category'=>'その他',
+        ];
+        DB::table('ingredients')->insert($param);
+        $param=[
+            'ingredients_id'=>'I0019',
+            'ingredients_name'=>'シチュールー',
             'ingredients_category'=>'その他',
         ];
         DB::table('ingredients')->insert($param);

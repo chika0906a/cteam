@@ -51,12 +51,21 @@ ECHO '<FONT COLOR="white">食材削除画面 </FONT>';
 @section('content3')
 
 <div class="disp_img">
-  <a href=''>
+  <a href='/fresh/general/vegedel'>
   <img src='../../images/2野菜.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/meatdel'>
   <img src='../../images/2肉.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/fishdel'>
   <img src='../../images/2魚.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/dairydel'>
   <img src='../../images/2乳製品.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/otherdel'>
   <img src='../../images/2その他.png' width="80" height="180">
+  </a>
 </div>
 <br><p><br><p><br><p>
 <br><p><br><p><br><p>

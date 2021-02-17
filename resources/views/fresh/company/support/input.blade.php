@@ -1,6 +1,6 @@
 @extends('layouts.fresh')
 
-@section('title', 'fresh')
+@section('title', '')
 
 @section('menu_title')
 お問い合わせ
@@ -34,7 +34,8 @@
 @endsection
 
 @section('content1')
-  <a href="/fresh/company/mypage">マイページに戻る</a>
+  <!--<a href="/fresh/company/mypage">マイページに戻る</a>!-->
+  <a href="javascript:history.back()" class="pochitto_btn_blue" style=font-size:10pt;>戻る</a>
 @endsection
 
 @section('footer')

@@ -24,5 +24,24 @@ ECHO '<FONT COLOR="white">冷蔵庫の在庫</FONT>';
           </tr>
       @endforeach
     </table>
-    <button type="button" onclick="history.back()">在庫一覧に戻る</button> 
+    <a href="/fresh/general/stocktop">在庫一覧に戻る</a> 
+    <a href="/fresh/general/mypage">マイページに戻る</a>
+@endsection
+
+@section('content3')
+  <a href='/fresh/general/vegeview'>
+  <img src='../../images/2野菜.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/meatview'>
+  <img src='../../images/2肉.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/fishview'>
+  <img src='../../images/2魚.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/dairyview'>
+  <img src='../../images/2乳製品.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/otherview'>
+  <img src='../../images/2その他.png' width="80" height="180">
+  </a>
 @endsection

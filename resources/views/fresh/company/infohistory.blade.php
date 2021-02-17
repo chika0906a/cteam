@@ -26,16 +26,19 @@ ECHO '<FONT COLOR="white">お知らせ送信履歴 </FONT>';
 ?><p>
 
 <table>
-  <tr><th>一般ユーザー</th><th>タイトル</th><th>テキスト</th><th>日付</th></tr>
+  <tr><th>最寄り駅</th><th>タイトル</th><th>テキスト</th><th>日付</th></tr>
     @foreach($items as $item)
       <tr>
-          <td>{{$item->name}}</td>
+          <td>{{$item->station_name}}</td>
           <td>{{$item->info_title}}</td>
           <td>{{$item->info_text}}</td>
           <td>{{$item->day}}</td>
       </tr>
     @endforeach
   </table>
+  <a href="javascript:history.back()" class="pochitto_btn_blue" style=font-size:10pt;>戻る</a>
+
+
 </div>
 @endsection
 

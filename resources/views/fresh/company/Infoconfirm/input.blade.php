@@ -84,7 +84,8 @@ ECHO '<FONT COLOR="aqua"> ▲</FONT>';
   
  </a><br><a>
  <a href='info'>
- <img src='../images/戻る.png'/>
+ <a href="/fresh/company/mypage" class="circle_spread_btn"style=font-size:15pt;>🏠<i class="fas fa-home fa-fw"></i></a>
+
  </a>
 </div>
 

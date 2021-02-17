@@ -10,7 +10,7 @@ use App\Http\Requests\HelloRequest;
 use Validator;
 use App\Person;
 
-class HelloController extends Controller
+class Hello1Controller extends Controller
 {
   
 public function index(Request $request) 

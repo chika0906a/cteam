@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,15 +14,22 @@ class OrdersTableSeeder extends Seeder
     {
         $param = [
             'mail' => 'aiueo@mail.com',
-            'ingredients_id' => '1',
+            'ingredients_id' => 'I0001',
+            'quantity' => '3',
+        ];
+        DB::table('Orders')->insert($param);
+
+        $param = [
+            'mail' => 'aiueo@mail.com',
+            'ingredients_id' => 'I0004',
             'quantity' => '100',
         ];
         DB::table('Orders')->insert($param);
 
         $param = [
             'mail' => 'aiueo@mail.com',
-            'ingredients_id' => '2',
-            'quantity' => '150',
+            'ingredients_id' => 'I0015',
+            'quantity' => '1',
         ];
         DB::table('Orders')->insert($param);
     }

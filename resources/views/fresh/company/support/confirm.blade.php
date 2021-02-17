@@ -1,6 +1,6 @@
 @extends('layouts.fresh')
 
-@section('title', 'fresh')
+@section('title', '')
 
 @section('menu_title')
 確認画面
@@ -17,13 +17,18 @@
   <tr><th>お問い合わせ内容</th><td>{{$data['support_text']}}
   <input type="hidden" name="support_text" value="{{ $data['support_text']}}"></td></tr>
   上記の内容でよろしければ「送信」ボタンを押してください。
-  <tr><th></th><td><button type="button" onclick="history.back()">戻る</button> </td><td><button type="submit" id="submit">送信</button></td>
+  <tr><th></th><td>
+  </td><td><button type="submit" id="submit">送信</button></td>
   </table>
   </form>
 @endsection
 
 @section('content1')
-  <a href="/fresh/company/mypage">マイページに戻る</a>
+<a href="/fresh/company/mypage" class="circle_spread_btn"style=font-size:15pt;>🏠<i class="fas fa-home fa-fw"></i></a>
+<a href="javascript:history.back()" class="pochitto_btn_blue" style=font-size:10pt;>戻る</a>
+
+
+  
 @endsection
 
 @section('footer')

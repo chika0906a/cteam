@@ -31,7 +31,7 @@
    @endforeach
    </table>
    <!--<td><button type="button" onclick="history.back()">戻る</button></td>!-->
-   <a href="http://localhost:8000/fresh/management/hello/top" class="btn btn-warning">戻る</a>未確定
+   <a href="/fresh/management/mypage" class="btn btn-warning">戻る</a>未確定
 @endsection
 
 

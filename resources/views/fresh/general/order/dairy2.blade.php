@@ -30,3 +30,34 @@ ECHO '<FONT COLOR="white">買い物リスト </FONT>';
     <input type="submit" value="追加">
     <button type="button" onclick="history.back()">戻る</button> 
 @endsection
+
+
+@section('content7')
+  
+ <button type="button" onclick="history.back()">前の画面に戻る</button> 
+
+<a href='/fresh/general/mypage'>
+<img src='../../images/image19.png'/>
+
+<br><br><br>
+<div class="disp_img">
+ <a href='/fresh/general/vegeadd2'>
+ <img src='../../images/2野菜.png' width="50" height="80">
+ </a>
+ <a href='/fresh/general/meatadd2'>
+ <img src='../../images/2肉.png' width="50" height="80">
+ </a>
+ <a href='/fresh/general/fishadd2'>
+ <img src='../../images/2魚.png' width="50" height="80">
+ </a>
+ <a href='/fresh/general/dairyadd2'>
+ <img src='../../images/2乳製品.png' width="50" height="80">
+ </a>
+ <a href='/fresh/general/otheradd2'>
+ <img src='../../images/2その他.png' width="50" height="80">
+ </a>
+</div>
+</div>
+</div>
+</div>
+@endsection

@@ -19,6 +19,7 @@ class CreateShoppingHistoryTable extends Migration
             $table->char('ingredients_id', 5);
             $table->integer("quantity");
             $table->primary(['mail', 'ingredients_id','day']);
+            $table->integer('company_id')->nullable();
             $table->foreign('ingredients_id')->references('ingredients_id')->on('ingredients');
             $table->timestamps();
         });

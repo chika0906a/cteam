@@ -1,5 +1,6 @@
 <?php
 
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,26 +14,39 @@ class GeneralusersTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'mail' => 'aiueo@mail.com',
-            'password' => '12345',
+            'name' => 'あいうえお',
+            'email' => 'aiueo@mail.com',
+            'password' => 'aaaaa',
             'gender' => 'man',
-            'date' => '20000101',
+            'birthday' => '20000101',
             'area_id' => 'A0001',
             'station_id' => 'S0002',
-            'people_ind' => '2',
-            'nickname' => 'あいうえお',
+            'people_ind' => 2,
             
         ];
         DB::table('generalusers')->insert($param);
+
         $param = [
-            'mail' => 'nnnnn@mail.com',
+            'name' => 'ななな',
+            'email' => 'nnnnn@mail.com',
             'password' => '9999',
             'gender' => 'woman',
-            'date' => '20001031',
+            'birthday' => '20001031',
             'area_id' => 'A0002',
             'station_id' => 'S0002',
-            'people_ind' => '1',
-            'nickname' => 'やまだ',
+            'people_ind' => 1,
+        ];
+        DB::table('generalusers')->insert($param);
+
+        $param = [
+            'name' => 'み',
+            'email' => 'mimimi@mail.com',
+            'password' => 'mmmmm',
+            'gender' => 'woman',
+            'birthday' => '19951231',
+            'area_id' => 'A0003',
+            'station_id' => 'S0002',
+            'people_ind' => 2,
         ];
         DB::table('generalusers')->insert($param);
     }

@@ -50,11 +50,15 @@ class TeamcController extends Controller
         return view('signup.done');
     }
 
+    //統計データの条件設定画面を表示
     public function datachoice()
     {
-        return view('fresh.company.toukei.input');
+        $ingredients = DB::table('ingredients')->get();
+        $areas = DB::table('areas')->get();
+        return view('fresh.company.toukei.input', ['ingredients' => $ingredients, 'areas' => $areas]);
     }
 
+    //店舗別の売上統計データを作成
     public function dataview(Request $request)
     {
         //選択した条件を取得
@@ -100,7 +104,7 @@ class TeamcController extends Controller
         }
 
         //エリア未選択の場合
-        if($area_name == "選択しない"){
+        if($area_name == 0){
             $areafree = true;
             $selectedarea = "選択しない";
         } else {
@@ -260,17 +264,20 @@ class TeamcController extends Controller
         return view('fresh.company.toukei.output', ['shopquantity' => $shopquantity, 'names' => $names, 'selected' => $selected]);
     }
     
+    //お問い合わせ画面表示
     public function companysupport()
     {
         return view('fresh.company.support.input');
     }
 
+    //お問い合わせ確認画面表示
     public function companysupportconfirm(SupportRequest $request)
     {
         $data = $request->all();
         return view('fresh.company.support.confirm', ['data' => $data]);
     }
 
+    //お問い合わせ完了画面表示
     public function companysupportfinish(SupportRequest $request)
     {
         $data = $request->all();
@@ -288,27 +295,41 @@ class TeamcController extends Controller
     //サービス情報作成画面
     public function infoadd(Request $request)
     {
-        //$items = DB::select('select station_name from stations' );
-        //return view('infoconfirm.input', ['items' => $items]);
-        $data = [
-            'msg'=>'',
-        ];
-        return view('fresh.company.info.input', $data);
-
+        $stations = DB::table('stations')->get();
+        return view('fresh.company.info.input', ['stations' => $stations]);
     }
 
+    //サービス情報作成確認画面
+    public function infoconfirm(Request $request)
+    {
+        $data = $request->all();
+        $station_id = $request->station_id;
+        $ss = DB::table('stations')->select('stations.station_name')->where('stations.station_id', $station_id)->first();
+        $s = $ss->station_name;
+        $items2 = [
+            "station_id" => $station_id,
+            "station_name" => $s,
+            "day1" => $request->day,
+            "info_title" => $request->info_title,
+            "info_text" => $request->info_text,
+        ];
+        return view('fresh.company.info.output', ['items2' => $items2]);
+    }
+
+    //サービス情報作成
     public function infocreate(Request $request)
     {
+        $mail = $request->session()->get('company_mail');
         $param = [
-            'mail' => $request->mail,
-            'day' => $request->day,
+            'mail' => $mail,
+            'day' => $request->day1,
             'info_title' => $request->info_title,
             'info_text' => $request->info_text,
             'station_id' => $request->station_id,
         ];
         DB::table('info')->insert($param);
 
-        return view('fresh.infofinishinput');
+        return view('fresh.company.info.finish');
     }
 
     public function image(Request $request, User $user) {
@@ -357,25 +378,19 @@ class TeamcController extends Controller
     }
 
     //お知らせ送信履歴のメソッド部分
-
     public function infohistory(Request $request)
     {
 
         //企業マイページにお知らせ送信履歴を表示するSQL文
-        $param = ['company_mail' => $request->company_mail];
-        $items = DB::select('SELECT DISTINCT name, info_title, info_text, day
-            FROM info, companies, generalusers
+        $param = ['company_mail' => $request->session()->get('company_mail')];
+        $items = DB::select('SELECT DISTINCT station_name, info_title, info_text, day
+            FROM info, companies, stations
                 WHERE info.mail = companies.company_mail AND
-                info.station_id = generalusers .station_id AND 
+                info.station_id = stations.station_id AND 
                 companies.company_mail = :company_mail', $param);
                 $param = ['mail' => $request->session()->get('usermail')];
 
         return view('fresh.company.infohistory', ['items' => $items]);
-
-        $data = [
-            'msg'=>'必要事項を記入してください。',
-        ];
-        return view('fresh.company.infohistory', $data);
     }
 
     public function infohistorypost(Request $request)

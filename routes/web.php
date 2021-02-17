@@ -35,7 +35,7 @@ Route::get('fresh/general/orders', 'App\Http\Controllers\GeneralController@order
 Route::get('fresh/general/ordersadd', 'App\Http\Controllers\GeneralController@ordersadd');
 //野菜の買い物リスト追加画面
 Route::get('fresh/general/vegeadd2', 'App\Http\Controllers\GeneralController@vegeadd2');
-//肉の買い物リスト画面
+//肉の買い物リスト追加画面
 Route::get('fresh/general/meatadd2', 'App\Http\Controllers\GeneralController@meatadd2');
 //魚の買い物リスト追加画面
 Route::get('fresh/general/fishadd2', 'App\Http\Controllers\GeneralController@fishadd2');
@@ -43,6 +43,16 @@ Route::get('fresh/general/fishadd2', 'App\Http\Controllers\GeneralController@fis
 Route::get('fresh/general/dairyadd2', 'App\Http\Controllers\GeneralController@dairyadd2');
 //その他の買い物リスト追加画面
 Route::get('fresh/general/otheradd2', 'App\Http\Controllers\GeneralController@otheradd2');
+//買い物リスト中の野菜カテゴリの食材を表示
+Route::get('fresh/general/vegeview2', 'App\Http\Controllers\GeneralController@vegeview2');
+//買い物リスト中の肉カテゴリの食材を表示
+Route::get('fresh/general/meatview2', 'App\Http\Controllers\GeneralController@meatview2');
+//買い物リスト中の魚カテゴリの食材を表示
+Route::get('fresh/general/fishview2', 'App\Http\Controllers\GeneralController@fishview2');
+//買い物リスト中の乳製品カテゴリの食材を表示
+Route::get('fresh/general/dairyview2', 'App\Http\Controllers\GeneralController@dairyview2');
+//買い物リスト中のその他カテゴリの食材を表示
+Route::get('fresh/general/otherview2', 'App\Http\Controllers\GeneralController@otherview2');
 //買い物リストに追加
 Route::post('fresh/general/ordercreate', 'App\Http\Controllers\GeneralController@ordercreate');
 //買い物リスト削除画面表示
@@ -125,15 +135,15 @@ Route::post('fresh/general/menu', 'App\Http\Controllers\GeneralController@menuse
 
 
 //お問い合わせ入力
-Route::get('fresh/support', 'App\Http\Controllers\GeneralController@supportquestion');
-Route::post('post/create', 'App\Http\Controllers\GeneralController@supportcreate');
+Route::get('fresh/general/support', 'App\Http\Controllers\GeneralController@supportquestion');
+Route::post('fresh/general/support', 'App\Http\Controllers\GeneralController@supportcreate');
 
 //送信完了画面（お問い合わせ）
-Route::get('general/complete', 'App\Http\Controllers\GeneralController@supportcomplete');
+Route::get('fresh/general/complete', 'App\Http\Controllers\GeneralController@supportcomplete');
 
 //マイページ編集
-Route::get('fresh/mypageedit', 'App\Http\Controllers\GeneralController@mypageedit');
-Route::post('fresh/mypageedit', 'App\Http\Controllers\GeneralController@mypageupdate');
+Route::get('fresh/general/mypageedit', 'App\Http\Controllers\GeneralController@mypageedit');
+Route::post('fresh/general/mypageedit', 'App\Http\Controllers\GeneralController@mypageupdate');
 //マイページ編集完了
 Route::get('jissyu8', 'App\Http\Controllers\Jissyu4_3Controller@index');
 Route::post('jissyu8', 'App\Http\Controllers\Jissyu4_3Controller@post');
@@ -143,10 +153,12 @@ Route::post('jissyu8', 'App\Http\Controllers\Jissyu4_3Controller@post');
 
 
 //企業ユーザー
-Route::get('fresh/company/login', 'App\Http\Controllers\TeamcController@getAuth');
-Route::post('fresh/company/login', 'App\Http\Controllers\TeamcController@postAuth');
+//ログイン画面表示
+Route::get('fresh/company/login', 'App\Http\Controllers\Auth\LoginController@showCompanyLoginForm');
+//ログイン認証
+Route::post('fresh/company/login', 'App\Http\Controllers\Auth\LoginController@companyLogin');
+//マイページ表示
 Route::get('fresh/company/mypage', 'App\Http\Controllers\TeamcController@mypage');
-Route::post('fresh/company/mypage', 'App\Http\Controllers\TeamcController@mypage');
 
 //企業ユーザー新規登録
 Route::get('new', 'App\Http\Controllers\TeamcController@new');
@@ -158,10 +170,14 @@ Route::post('fresh/infohistory', 'App\Http\Controllers\TeamcController@infohisto
 
 //お知らせ情報作成画面
 Route::get('fresh/company/info', 'App\Http\Controllers\TeamcController@infoadd');
-Route::post('fresh/company/info', 'App\Http\Controllers\TeamcController@infocreate');
+//お知らせ情報確認画面
+Route::post('fresh/company/infoconfirm', 'App\Http\Controllers\TeamcController@infoconfirm');
 //お知らせフォーム送信完了画面
-Route::get('fresh/company/infofinish', 'App\Http\Controllers\TeamcController@infocomplete');
-Route::post('fresh/company/infofinish', 'App\Http\Controllers\TeamcController@post');
+Route::post('fresh/company/infofinish', 'App\Http\Controllers\TeamcController@infocreate');
+
+//お知らせ送信履歴を表示する画面
+Route::get('fresh/company/infohistory', 'App\Http\Controllers\TeamcController@infohistory');
+Route::post('fresh/company/infohistory', 'App\Http\Controllers\TeamcController@infohistory');
 
 
 Route::get('fresh/signup', 'App\Http\Controllers\TeamcController@signup');
@@ -203,9 +219,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//お知らせ送信履歴を表示する画面
-Route::get('fresh/infohistory', 'App\Http\Controllers\TeamcController@infohistory');
-Route::post('fresh/infohistory', 'App\Http\Controllers\TeamcController@infohistory');
 
 
 //全ユーザー
@@ -256,13 +269,18 @@ Route::post('companysupport/remove', 'App\Http\Controllers\CompanysupportControl
 
 
 //管理(ManagementController)
+//ログイン画面表示
+Route::get('fresh/management/login', 'App\Http\Controllers\Auth\LoginController@showManagementLoginForm');
+//ログイン認証
+Route::post('fresh/management/login', 'App\Http\Controllers\Auth\LoginController@managementLogin');
+//マイページ表示
+Route::get('fresh/management/mypage', 'App\Http\Controllers\ManagementController@top');
 //ログイン画面
 Route::get('hello2/auth', 'App\Http\Controllers\ManagementController@getAuth');
 Route::post('hello2/auth', 'App\Http\Controllers\ManagementController@postAuth');
 
 //トップ画面
-Route::get('hello2/top', 'App\Http\Controllers\ManagementController@top')
-        ->middleware('auth');
+Route::get('hello2/top', 'App\Http\Controllers\ManagementController@top');
 Route::post('hello2/top', 'App\Http\Controllers\ManagementController@post');
 
 

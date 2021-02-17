@@ -1,9 +1,9 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SupportTableSeeder extends Seeder
+class SupportsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,22 +13,20 @@ class SupportTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'support_num' => 1,
             'mail' => 'aiueo@mail.com',
             'support_mail' => 'itoyo123@mail',
-            'day' => 20201031,
-            'support_text' => 'あいうえお',
+            'day' => '2020-10-31',
+            'support_text' => 'ログインできません',
         ];
-        DB::table('support')->insert($param);
+        DB::table('supports')->insert($param);
 
         $param = [
-            'support_num' => 2,
             'mail' => 'aiueo@mail.com',
             'support_mail' => 'aiueo999@mail.com',
-            'day' => 20201101,
-            'support_text' => 'かきくけこ',
+            'day' => '2020-11-01',
+            'support_text' => '退会したいです',
         ];
-        DB::table('support')->insert($param);
+        DB::table('supports')->insert($param);
 
 
     }
