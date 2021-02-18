@@ -49,12 +49,15 @@ ECHO '<FONT COLOR="white">マイページ </FONT>';
 
 @section('content4')
 <div class="disp_img">
-  <img src='../../images/お知らせ背景.png'/>
-  
+  <img src='../../images/お知らせ.png'/>
+</div>
+@endsection
+
+@section('content5')
   @isset($items)
   <!--マイページにお知らせを表示!-->
-  <table>
-  <tr><th>企業名</th><th>タイトル</th><th>テキスト</th><th>日付</th></tr>
+  <table align="center">
+  <tr><th>店舗名</th><th>タイトル</th><th>テキスト</th><th>日付</th></tr>
     @foreach($items as $item)
       <tr>
           <td>{{$item->company_name}}</td>
@@ -65,24 +68,8 @@ ECHO '<FONT COLOR="white">マイページ </FONT>';
     @endforeach
   </table>
   @endisset
-</div>
 @endsection
 
-@section('content5')
-<div class="disp_img">
-  
-  <img src='../../images/お知らせ.png'/>
-  </a>
-</div>
-@endsection
-
-@section('content6')
-<div class="disp_img">
-  <a href='/fresh/general/mypageedit'>
-  <img src='../../images/編集.png'/>
-  </a>
-</div>
-@endsection
 
 @section('content7')
 <div class="disp_img">

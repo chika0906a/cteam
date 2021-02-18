@@ -1,11 +1,28 @@
-@extends('layouts.freshgeneralB')
-@section('title', '▲在庫登録')
+@extends('layouts.freshgeneralC')
+@section('title', '')
+
+@section('menu_title')
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>在庫登録</title>
+  <style>
+    div.button{
+      text-align:center;
+    }
+  </style>
+</head>
+</html>
+@endsection
 
 @section('content')
 <?PHP
 ECHO '<FONT COLOR="aqua"> ▲</FONT>';
-ECHO '<FONT COLOR="white">在庫登録 </FONT>';
+ECHO '<FONT COLOR="white">在庫登録</FONT>';
 ?><p>
+
 @endsection
 
 @section('content1')
@@ -15,8 +32,8 @@ ECHO '<FONT COLOR="white">在庫登録 </FONT>';
 @endsection
 
 @section('content2')
-  <h2>野菜</h2>
-  <table>
+<h2>野菜</h2>
+  <table align ="center">
     <form action="/fresh/general/stockcreate" method="post">
     @csrf
       @foreach($items as $item)
@@ -31,9 +48,11 @@ ECHO '<FONT COLOR="white">在庫登録 </FONT>';
     <button type="button" onclick="history.back()">種類選択に戻る</button> 
 @endsection
 
+@section('content3')
+<a href="/fresh/general/mypage"><img src='../../images/マイページに戻るボタン.png'/></button>
+@endsection
+
 @section('content7')
-<br><p><br><p><br><p>
-<br><p><br><p><br><p>
 <div class="disp_img">
   <a href='/fresh/general/vegeadd'>
   <img src='../../images/2野菜.png' width="80" height="180">
@@ -51,8 +70,4 @@ ECHO '<FONT COLOR="white">在庫登録 </FONT>';
   <img src='../../images/2その他.png' width="80" height="180">
   </a>
 </div>
-<br><p><br><p><br><p>
-<br><p><br><p><br><p>
-<br><p><br><p><br><p>
-<a href="/fresh/general/mypage"><img src='../../images/マイページに戻るボタン.png'/></button>
 @endsection

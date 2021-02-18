@@ -3,7 +3,7 @@
    <title>@yield('title')</title>
    <style>
    body {
-       color:#999; 
+       color:white; 
       background: linear-gradient(to right top, #888, #000000);
        }
    .disp_img{
@@ -18,11 +18,11 @@
    
    .content {font-size:40pt;color:#ffffff; margin:50px 0 40px 0; line-height:0; text-align: center; }
    
-   .content1 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0; line-height:0; text-align: center ;}
+   .content1 {font-size:12pt; color:#ffffff;margin:0 0 30px 0; line-height:0; text-align: center ;}
    
-   .content2 {font-size:12pt; color:#ffffff;margin:130 0 40px 0; line-height:0; text-align: center ; }
+   .content2 {font-size:12pt; color:#ffffff;margin:-60 0 20px 0; line-height:0; text-align: center ; }
 
-   .content3 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0; line-height:0; text-align: center ;}
+   .content3 {font-size:12pt; color:#ffffff;margin:30px 0 40px 0; line-height:0; text-align: center ;}
 
    .content4 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0; line-height:0; text-align: center ;}
 
@@ -30,7 +30,7 @@
 
    .content6 {font-size:12pt; color:#ffffff;margin:100px 0 0 0; line-height:0; text-align: center ;}
 
-   .content7 {font-size:12pt; color:#ffffff;margin:0 0 200 0; line-height:0; text-align: center ; }
+   .content7 {font-size:12pt; color:#ffffff; position:absolute; left:280px;bottom:170px; line-height:0; text-align: center ; }
 
    .footer { text-align:right; font-size:10pt; margin:10px;
        border-bottom:solid 1px #ccc; color:#ccc; }

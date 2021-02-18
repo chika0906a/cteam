@@ -1,29 +1,38 @@
-@extends('layouts.freshgeneral')
-
+@extends('layouts.freshgeneralC')
 @section('title', '')
+
 @section('menu_title')
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>数量変更</title>
+  <style>
+    div.button{
+      text-align:center;
+    }
+  </style>
+</head>
+</html>
 @endsection
 
 @section('content')
 <?PHP
 ECHO '<FONT COLOR="aqua"> ▲</FONT>';
-ECHO '<FONT COLOR="white">数量変更画面 </FONT>';
+ECHO '<FONT COLOR="white">数量変更</FONT>';
 ?><p>
-@endsection
 
+@endsection
 
 @section('content1')
 <div class="disp_img">
-<div style="position: relative; display:inline-block;">
-<img src="../../images/base.png" width="350" height="310"> 
-<div style="position: absolute; top: 0; left: 0; max-width: 100%; max-height: 100%; padding: 30px; text-align: left;">
+  <img src='../../images/base1.png'/>
+</div>
+@endsection
 
-
-<br><br><br><br><br><br><br><br>
-
-<div class="disp_img">
-
-<table>
+@section('content2')
+<table align="center">
   <h2>その他</h2>
     <form action="/fresh/general/stockedit" method="post">
     @csrf
@@ -36,42 +45,29 @@ ECHO '<FONT COLOR="white">数量変更画面 </FONT>';
       @endforeach
     </table>
     <input type="submit" value="更新"/>
-
- <button type="button" onclick="history.back()">前の画面に戻る</button> 
-
- <a href='/fresh/general/mypage'>
- <img src='../../images/image19.png'/>
-
- <br><br><br>
- <div class="disp_img">
-  <a href='/fresh/general/vegeedit'>
-  <img src='../../images/2野菜.png' width="50" height="80">
-  <a href='/fresh/general/meatedit'>
-  <img src='../../images/2肉.png' width="50" height="80">
-  <a href='/fresh/general/fishedit'>
-  <img src='../../images/2魚.png' width="50" height="80">
-  <a href='/fresh/general/dairyedit'>
-  <img src='../../images/2乳製品.png' width="50" height="80">
-  <a href='/fresh/general/otheredit'>
-  <img src='../../images/2その他.png' width="50" height="80">
-</div>
-</div>
- </div>
-</div>
-@endsection
-
-@section('content2')
-
-
+    <button type="button" onclick="history.back()">戻る</button> 
 @endsection
 
 @section('content3')
-
-
-
-
+<a href="/fresh/general/mypage"><img src='../../images/マイページに戻るボタン.png'/></button>
 @endsection
 
-
-@section('footer')
+@section('content7')
+<div class="disp_img">
+  <a href='/fresh/general/vegeedit'>
+  <img src='../../images/2野菜.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/meatedit'>
+  <img src='../../images/2肉.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/fishedit'>
+  <img src='../../images/2魚.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/dairyedit'>
+  <img src='../../images/2乳製品.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/otheredit'>
+  <img src='../../images/2その他.png' width="80" height="180">
+  </a>
+</div>
 @endsection

@@ -1,11 +1,28 @@
-@extends('layouts.freshgeneralB')
+@extends('layouts.freshgeneralC')
 @section('title', '')
+
+@section('menu_title')
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>買い物リストに追加</title>
+  <style>
+    div.button{
+      text-align:center;
+    }
+  </style>
+</head>
+</html>
+@endsection
 
 @section('content')
 <?PHP
 ECHO '<FONT COLOR="aqua"> ▲</FONT>';
-ECHO '<FONT COLOR="white">買い物リスト </FONT>';
+ECHO '<FONT COLOR="white">買い物リストに追加</FONT>';
 ?><p>
+
 @endsection
 
 @section('content1')
@@ -16,7 +33,7 @@ ECHO '<FONT COLOR="white">買い物リスト </FONT>';
 
 @section('content2')
   <h2>魚</h2>
-  <table>
+  <table align="center">
     <form action="/fresh/general/ordercreate" method="post">
     @csrf
       @foreach($items as $item)
@@ -32,32 +49,26 @@ ECHO '<FONT COLOR="white">買い物リスト </FONT>';
 @endsection
 
 
+@section('content3')
+<a href="/fresh/general/mypage"><img src='../../images/マイページに戻るボタン.png'/></button>
+@endsection
+
 @section('content7')
-  
- <button type="button" onclick="history.back()">前の画面に戻る</button> 
-
-<a href='/fresh/general/mypage'>
-<img src='../../images/image19.png'/>
-
-<br><br><br>
 <div class="disp_img">
- <a href='/fresh/general/vegeadd2'>
- <img src='../../images/2野菜.png' width="50" height="80">
- </a>
- <a href='/fresh/general/meatadd2'>
- <img src='../../images/2肉.png' width="50" height="80">
- </a>
- <a href='/fresh/general/fishadd2'>
- <img src='../../images/2魚.png' width="50" height="80">
- </a>
- <a href='/fresh/general/dairyadd2'>
- <img src='../../images/2乳製品.png' width="50" height="80">
- </a>
- <a href='/fresh/general/otheradd2'>
- <img src='../../images/2その他.png' width="50" height="80">
- </a>
-</div>
-</div>
-</div>
+  <a href='/fresh/general/vegeadd2'>
+  <img src='../../images/2野菜.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/meatadd2'>
+  <img src='../../images/2肉.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/fishadd2'>
+  <img src='../../images/2魚.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/dairyadd2'>
+  <img src='../../images/2乳製品.png' width="80" height="180">
+  </a>
+  <a href='/fresh/general/otheradd2'>
+  <img src='../../images/2その他.png' width="80" height="180">
+  </a>
 </div>
 @endsection

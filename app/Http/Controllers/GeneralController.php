@@ -555,7 +555,7 @@ class GeneralController extends Controller
             $param = [
                 'mail' => $request->session()->get('usermail'),
                 'day' => $item,
-                'recipe' => $request->recipe[$item],
+                'recipe' => $request->recipearray[$item],
             ];
             //ユーザーのメールアドレス・食材リスト・数量をstocksテーブルに保存
             DB::table('menus')->insert($param);
@@ -568,24 +568,25 @@ class GeneralController extends Controller
     }
 
 
-    //献立表示日にち選択画面表示
-    public function menufind(Request $request)
-    {
-        return view('fresh.general.menu.choice',['input' => '']);
-    }
+   //献立表示日にち選択画面表示
+   public function menufind(Request $request)
+   {
+       return view('fresh.general.menu.choice',['input' => '']);
+   }
 
-    //献立表示
-    public function menusearch(Request $request)
-    {
-        $param = [
-                    'day' => $request->input,
-                    'mail' => $request->session()->get('usermail'),
-                ];
-        $joi = DB::select('select * from menus inner join recipetitle on menus.recipe = recipetitle.recipe inner join recipedetails on recipetitle.recipe = recipedetails.recipe inner join ingredients on recipedetails.ingredients_id = ingredients.ingredients_id inner join users on menus.mail = users.email where menus.day = :day and menus.mail = :mail',$param); 
+   //献立表示
+   public function menusearch(Request $request)
+   {
+       $param = [
+                   'day' => $request->input,
+                   'mail' => $request->session()->get('usermail'),
+               ];
+       $joi = DB::select('select * from menus inner join recipetitle on menus.recipe = recipetitle.recipe inner join recipedetails on recipetitle.recipe = recipedetails.recipe inner join ingredients on recipedetails.ingredients_id = ingredients.ingredients_id inner join generalusers on menus.mail = generalusers.email where menus.day = :day and menus.mail = :mail',$param); 
 
-        return view('fresh.general.menu.choice', ['items' => $joi]);
+       return view('fresh.general.menu.choice', ['items' => $joi]);
 
-    }
+   }
+
 
         
     //お問い合わせ入力画面表示

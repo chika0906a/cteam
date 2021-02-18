@@ -27,10 +27,10 @@
    .disp_img{
       background-repeat:no-repeat;
       width:auto;
-      height:65px;
+      height:95px;
       align:left;
       object-fit:cover;
-      margin:0px 0px 20px 0px;
+      margin:0px 0px 0px 0px;
    }
    .menutitle {font-size:100pt; font-weight:bold;  margin:50px 0 40px 0;line-height:0;  text-align: center;}
    .menu-drawer .btn {font-size: 27px; background: #fff; width: 40px;padding: 4px 0; cursor: pointer; text-align: center; top: 0; right: 0;}
@@ -71,17 +71,17 @@
    
    .content1 {font-size:12pt; color:#ffffff;margin:50px 0 40px 0px; line-height:0; text-align: center ;}
    
-   .content2 {font-size:12pt; color:#ffffff;margin:-50px -500 40px 0px; line-height:0; text-align: center ;}
+   .content2 {font-size:12pt; color:#ffffff;margin:-40px 170 30px 0; line-height:0; text-align: center ;}
 
    .content3 {font-size:12pt; color:#ffffff;margin:-105px -270 40px 0px; line-height:0; text-align: center ;}
 
-   .content4 {font-size:12pt; color:#ffffff;margin:80px -490 40px 0px; line-height:0; text-align: center ;}
+   .content4 {font-size:12pt; color:#ffffff;margin:80px 0 40px 0; line-height:0; text-align: center ;}
 
-   .content5 {font-size:12pt; color:#ffffff;margin:-80px -580 40px 0px; line-height:0; text-align: center ;}
+   .content5 {font-size:12pt; color:#ffffff;margin:-80px 0 0 0; line-height:0; text-align: center ;}
 
    .content6 {font-size:12pt; color:#ffffff;margin:170px 80 40px 0px; line-height:0; text-align: center ;}
 
-   .content7 {font-size:12pt; color:#ffffff;margin:-20px 0 40px 0px; line-height:0; text-align: center ; }
+   .content7 {font-size:12pt; color:#ffffff; margin:240 0 0 0; line-height:0; text-align: center ; }
 
    .footer { text-align:right; font-size:10pt; margin:10px;
        border-bottom:solid 10px #ccc; color:#ccc; }

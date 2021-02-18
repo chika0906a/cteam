@@ -1,14 +1,6 @@
-@extends('layouts.freshgeneral')
-<header>
-  <div id="nav-drawer">
-      <input id="nav-input" type="checkbox" class="nav-unshown">
-      <label id="nav-open" for="nav-input"><span></span></label>
-      <label class="nav-unshown" id="nav-close" for="nav-input"></label>
-      <div id="nav-content"><img src="../../images/メモ帳.png"></div>
-  </div>
-</header>
+@extends('layouts.freshgeneralB')
 
-@section('title', '▲在庫登録')
+@section('title', '')
 
 @section('menu_title')
 
@@ -45,9 +37,16 @@ ECHO '<FONT COLOR="aqua"> 在庫登録</FONT>';
     登録する食材の種類を選んでください
 @endsection
 
+@section('content2')
+<br><br><br><br><br>
+@endsection
+
+@section('content3')
+<a href="/fresh/general/mypage"><img src='../../images/マイページに戻るボタン.png'/></button>
+@endsection
+
 @section('content7')
-<br><p><br><p><br><p>
-<br><p><br><p><br><p>
+
 <div class="disp_img">
   <a href='/fresh/general/vegeadd'>
   <img src='../../images/2野菜.png' width="80" height="180">
@@ -65,8 +64,4 @@ ECHO '<FONT COLOR="aqua"> 在庫登録</FONT>';
   <img src='../../images/2その他.png' width="80" height="180">
   </a>
 </div>
-<br><p><br><p><br><p>
-<br><p><br><p><br><p>
-<br><p><br><p><br><p>
-<a href="/fresh/general/mypage"><img src='../../images/マイページに戻るボタン.png'/></button>
 @endsection
