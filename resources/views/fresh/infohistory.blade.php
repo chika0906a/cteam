@@ -1,4 +1,4 @@
-@extends('layouts.jissyu')
+@extends('layouts.fresh')
 @section('title', '')
 @section('menu_title')
 <?php
