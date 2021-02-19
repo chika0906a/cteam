@@ -1,4 +1,4 @@
-@extends('layouts.jissyu')
+@extends('layouts.freshgeneralC')
 
 @section('title', '今週の献立')
 
@@ -6,12 +6,12 @@
 
 @endsection
 
-@section('content')
+@section('content6')
   <form action="/fresh/general/menu" method="post">　<!-- コントローラーの呼び出し -->
   @csrf
   <p>検索したい日付を入力してください</P>
   <P>例　20190101</p>
-  <input type="text" name="input" >　　　<!-- 検索フォーム　-->
+  <input type="date" name="input" >　　　<!-- 検索フォーム　-->
   <input type="submit" value="献立表示">
   </form>
   @if (isset($items))

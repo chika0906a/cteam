@@ -577,12 +577,17 @@ class GeneralController extends Controller
    //献立表示
    public function menusearch(Request $request)
    {
-       $param = [
-                   'day' => $request->input,
-                   'mail' => $request->session()->get('usermail'),
-               ];
-       $joi = DB::select('select * from menus inner join recipetitle on menus.recipe = recipetitle.recipe inner join recipedetails on recipetitle.recipe = recipedetails.recipe inner join ingredients on recipedetails.ingredients_id = ingredients.ingredients_id inner join generalusers on menus.mail = generalusers.email where menus.day = :day and menus.mail = :mail',$param); 
+        //$param = [
+          //         'day' => $request->input,
+        //           'mail' => $request->session()->get('usermail'),
+      //         ];
+    //$joi = DB::select('select * from menus inner join recipetitle on menus.recipe = recipetitle.recipe inner join recipedetails on recipetitle.recipe = recipedetails.recipe inner join ingredients on recipedetails.ingredients_id = ingredients.ingredients_id inner join generalusers on menus.mail = generalusers.email where menus.day = :day and menus.mail = :mail',$param); 
+       
 
+     $date = $request->input;
+       $email = $request->session()->get('usermail');
+
+       $joi = DB::table('menus')->join('recipetitle', 'menus.recipe', '=', 'recipetitle.recipe')->join('recipedetails', 'recipedetails.recipe', '=', 'menus.recipe')->join('ingredients', 'ingredients.ingredients_id', '=', 'recipedetails.ingredients_id')->leftjoin('generalusers', 'generalusers.email', '=', 'menus.mail')->where('menus.day', $date)->where('menus.mail', $email)->get();
        return view('fresh.general.menu.choice', ['items' => $joi]);
 
    }
